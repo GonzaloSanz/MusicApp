@@ -257,15 +257,23 @@
         },
         {
             "id": 3,
-            "nombre": "Canción 3",
-            "ruta": "03-Cancion.mp3",
-            "duracion": ""
+            "nombre": "Hookah",
+            "artista": "Faxu & Chef C",
+            "fecha_lanzamiento": "20 de Enero de 2022",
+            "rutaImagen": "Hookah Cover.jpg",
+            "color": "blue",
+            "ruta": "Hookah.mp3",
+            "duracion": "2:16"
         },
         {
             "id": 4,
-            "nombre": "Canción 4",
-            "ruta": "04-Cancion.mp3",
-            "duracion": ""
+            "nombre": "Tofu Delivery",
+            "artista": "Orslok & Rojuu",
+            "fecha_lanzamiento": "29 de Octubre de 2021",
+            "rutaImagen": "Tofu Delivery Cover.jpg",
+            "color": "red",
+            "ruta": "Tofu Delivery.mp3",
+            "duracion": "3:04"
         }
     ]
 }
