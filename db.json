@@ -1,0 +1,91 @@
+{
+    "albumes": [
+        {
+            "id": 1,
+            "nombreAlbum": "Album 1",
+            "artista": "Artista 1",
+            "fecha_lanzamiento": "27 de Enero de 2023",
+            "cantidad_canciones": 12,
+            "duracion": "36:45",
+            "rutaImagen": "album1.jpg",
+            "color": "blue",
+            "canciones": [
+                {
+                    "id": 1,
+                    "nombre": "Canción 1",
+                    "ruta": "01-Cancion.mp3"
+                },
+                {
+                    "id": 2,
+                    "nombre": "Canción 2",
+                    "ruta": "02-Cancion.mp3"
+                },
+                {
+                    "id": 3,
+                    "nombre": "Canción 3",
+                    "ruta": "03-Cancion.mp3"
+                },
+                {
+                    "id": 4,
+                    "nombre": "Canción 4",
+                    "ruta": "04-Cancion.mp3"
+                },
+                {
+                    "id": 5,
+                    "nombre": "Canción 5",
+                    "ruta": "05-Cancion.mp3"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "nombreAlbum": "Album 2",
+            "artista": "Artista 2",
+            "fecha_lanzamiento": "8 de Julio de 2017",
+            "cantidad_canciones": 19,
+            "duracion": "54:14",
+            "rutaImagen": "album2.jpg",
+            "color": "red",
+            "canciones": [
+                {
+                    "id": 1,
+                    "nombre": "Canción 1",
+                    "ruta": "01-Cancion.mp3"
+                },
+                {
+                    "id": 2,
+                    "nombre": "Canción 2",
+                    "ruta": "02-Cancion.mp3"
+                },
+                {
+                    "id": 3,
+                    "nombre": "Canción 3",
+                    "ruta": "03-Cancion.mp3"
+                }
+            ]
+        }
+    ],
+
+    "sencillas": [
+        {
+            "id": 1,
+            "nombre": "Canción 1",
+            "ruta": "01-Cancion.mp3"
+        },
+        {
+            "id": 2,
+            "nombre": "Canción 2",
+            "ruta": "02-Cancion.mp3"
+        },
+        {
+            "id": 3,
+            "nombre": "Canción 3",
+            "ruta": "03-Cancion.mp3"
+        },
+        {
+            "id": 4,
+            "nombre": "Canción 4",
+            "ruta": "04-Cancion.mp3"
+        }
+    ]
+}
