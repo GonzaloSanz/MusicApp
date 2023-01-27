@@ -13,27 +13,32 @@
                 {
                     "id": 1,
                     "nombre": "Canción 1",
-                    "ruta": "01-Cancion.mp3"
+                    "ruta": "01-Cancion.mp3",
+                    "duracion": ""
                 },
                 {
                     "id": 2,
                     "nombre": "Canción 2",
-                    "ruta": "02-Cancion.mp3"
+                    "ruta": "02-Cancion.mp3",
+                    "duracion": ""
                 },
                 {
                     "id": 3,
                     "nombre": "Canción 3",
-                    "ruta": "03-Cancion.mp3"
+                    "ruta": "03-Cancion.mp3",
+                    "duracion": ""
                 },
                 {
                     "id": 4,
                     "nombre": "Canción 4",
-                    "ruta": "04-Cancion.mp3"
+                    "ruta": "04-Cancion.mp3",
+                    "duracion": ""
                 },
                 {
                     "id": 5,
                     "nombre": "Canción 5",
-                    "ruta": "05-Cancion.mp3"
+                    "ruta": "05-Cancion.mp3",
+                    "duracion": ""
                 }
             ]
         },
@@ -50,17 +55,50 @@
                 {
                     "id": 1,
                     "nombre": "Canción 1",
-                    "ruta": "01-Cancion.mp3"
+                    "ruta": "01-Cancion.mp3",
+                    "duracion": ""
                 },
                 {
                     "id": 2,
                     "nombre": "Canción 2",
-                    "ruta": "02-Cancion.mp3"
+                    "ruta": "02-Cancion.mp3",
+                    "duracion": ""
                 },
                 {
                     "id": 3,
                     "nombre": "Canción 3",
-                    "ruta": "03-Cancion.mp3"
+                    "ruta": "03-Cancion.mp3",
+                    "duracion": ""
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "nombreAlbum": "Vice Versa",
+            "artista": "Rauw Alejandro",
+            "fecha_lanzamiento": "25 de Junio de 2021",
+            "cantidad_canciones": 13,
+            "duracion": "44:02",
+            "rutaImagen": "album3.jpg",
+            "color": "purple",
+            "canciones": [
+                {
+                    "id": 1,
+                    "nombre": "Canción 1",
+                    "ruta": "01-Cancion.mp3",
+                    "duracion": ""
+                },
+                {
+                    "id": 2,
+                    "nombre": "Canción 2",
+                    "ruta": "02-Cancion.mp3",
+                    "duracion": ""
+                },
+                {
+                    "id": 3,
+                    "nombre": "Canción 3",
+                    "ruta": "03-Cancion.mp3",
+                    "duracion": ""
                 }
             ]
         }
@@ -70,22 +108,26 @@
         {
             "id": 1,
             "nombre": "Canción 1",
-            "ruta": "01-Cancion.mp3"
+            "ruta": "01-Cancion.mp3",
+            "duracion": ""
         },
         {
             "id": 2,
             "nombre": "Canción 2",
-            "ruta": "02-Cancion.mp3"
+            "ruta": "02-Cancion.mp3",
+            "duracion": ""
         },
         {
             "id": 3,
             "nombre": "Canción 3",
-            "ruta": "03-Cancion.mp3"
+            "ruta": "03-Cancion.mp3",
+            "duracion": ""
         },
         {
             "id": 4,
             "nombre": "Canción 4",
-            "ruta": "04-Cancion.mp3"
+            "ruta": "04-Cancion.mp3",
+            "duracion": ""
         }
     ]
 }
