@@ -79,26 +79,164 @@
             "fecha_lanzamiento": "25 de Junio de 2021",
             "cantidad_canciones": 13,
             "duracion": "44:02",
-            "rutaImagen": "album3.jpg",
+            "rutaImagen": "Vice Versa Cover.jpg",
             "color": "purple",
             "canciones": [
                 {
                     "id": 1,
-                    "nombre": "Canción 1",
-                    "ruta": "01-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "Todo De Ti",
+                    "ruta": "Todo De Ti.mp3",
+                    "duracion": "3:19"
                 },
                 {
                     "id": 2,
-                    "nombre": "Canción 2",
-                    "ruta": "02-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "Sexo Virtual",
+                    "ruta": "Sexo Virtual.mp3",
+                    "duracion": "3:28"
                 },
                 {
                     "id": 3,
-                    "nombre": "Canción 3",
-                    "ruta": "03-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "Nubes",
+                    "ruta": "Nubes.mp3",
+                    "duracion": "2:58"
+                },
+                {
+                    "id": 4,
+                    "nombre": "2 Catorce",
+                    "ruta": "2 Catorce.mp3",
+                    "duracion": "3:25"
+                },
+                {
+                    "id": 5,
+                    "nombre": "Aquel Nap ZzZz",
+                    "ruta": "Aquel Nap ZzZz.mp3",
+                    "duracion": "4:55"
+                },
+                {
+                    "id": 6,
+                    "nombre": "Cúrame",
+                    "ruta": "Cúrame.mp3",
+                    "duracion": "2:44"
+                },
+                {
+                    "id": 7,
+                    "nombre": "Cosa Guapa",
+                    "ruta": "Cosa Guapa.mp3",
+                    "duracion": "4:15"
+                },
+                {
+                    "id": 8,
+                    "nombre": "Desenfocao",
+                    "ruta": "Desenfocao.mp3",
+                    "duracion": "2:50"
+                },
+                {
+                    "id": 9,
+                    "nombre": "Cuándo Fue",
+                    "ruta": "Cuándo Fue.mp3",
+                    "duracion": "2:48"
+                },
+                {
+                    "id": 10,
+                    "nombre": "La Old Skul",
+                    "ruta": "La Old Skul.mp3",
+                    "duracion": "3:34"
+                },
+                {
+                    "id": 11,
+                    "nombre": "Y Eso",
+                    "ruta": "Y Eso.mp3",
+                    "duracion": "3:20"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Tengo un Pal",
+                    "ruta": "Tengo un Pal.mp3",
+                    "duracion": "3:15"
+                },
+                {
+                    "id": 13,
+                    "nombre": "Brazilera",
+                    "ruta": "Brazilera.mp3",
+                    "duracion": "3:04"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "nombreAlbum": "ICYMI",
+            "artista": "EDEN",
+            "fecha_lanzamiento": "9 de Septiembre de 2022",
+            "cantidad_canciones": 11,
+            "duracion": "38:53",
+            "rutaImagen": "ICYMI Cover.jpg",
+            "color": "yellow",
+            "canciones": [
+                {
+                    "id": 1,
+                    "nombre": "A Call",
+                    "ruta": "A Call.mp3",
+                    "duracion": "2:07"
+                },
+                {
+                    "id": 2,
+                    "nombre": "Balling",
+                    "ruta": "Balling.mp3",
+                    "duracion": "3:47"
+                },
+                {
+                    "id": 3,
+                    "nombre": "Sci-Fi",
+                    "ruta": "Sci-Fi.mp3",
+                    "duracion": "2:56"
+                },
+                {
+                    "id": 4,
+                    "nombre": "Modern Warfare",
+                    "ruta": "Modern Warfare.mp3",
+                    "duracion": "3:22"
+                },
+                {
+                    "id": 5,
+                    "nombre": "Waiting Room",
+                    "ruta": "Waiting Room.mp3",
+                    "duracion": "2:13"
+                },
+                {
+                    "id": 6,
+                    "nombre": "Closer 2",
+                    "ruta": "Closer 2.mp3",
+                    "duracion": "3:18"
+                },
+                {
+                    "id": 7,
+                    "nombre": "PS1",
+                    "ruta": "PS1.mp3",
+                    "duracion": "4:02"
+                },
+                {
+                    "id": 8,
+                    "nombre": "Call Me Back",
+                    "ruta": "Call Me Back.mp3",
+                    "duracion": "6:20"
+                },
+                {
+                    "id": 9,
+                    "nombre": "Duvidha",
+                    "ruta": "Duvidha.mp3",
+                    "duracion": "1:41"
+                },
+                {
+                    "id": 10,
+                    "nombre": "Elsewhere",
+                    "ruta": "Elsewhere.mp3",
+                    "duracion": "6:04"
+                },
+                {
+                    "id": 11,
+                    "nombre": "Reaching 2",
+                    "ruta": "Reaching 2.mp3",
+                    "duracion": "2:58"
                 }
             ]
         }
