@@ -2,73 +2,157 @@
     "albumes": [
         {
             "id": 1,
-            "nombreAlbum": "Album 1",
-            "artista": "Artista 1",
-            "fecha_lanzamiento": "27 de Enero de 2023",
+            "nombreAlbum": "My Head Is An Animal",
+            "artista": "Of Monsters And Men",
+            "fecha_lanzamiento": "20 de Septiembre de 2011",
             "cantidad_canciones": 12,
-            "duracion": "36:45",
-            "rutaImagen": "album1.jpg",
-            "color": "blue",
+            "duracion": "59:38",
+            "rutaImagen": "MyHeadIsAnAnimal.jpg",
+            "color": "gray",
             "canciones": [
                 {
                     "id": 1,
-                    "nombre": "Canción 1",
-                    "ruta": "01-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "Dirty Paws",
+                    "ruta": "DirtyPaws.mp3",
+                    "duracion": "4:34"
                 },
                 {
                     "id": 2,
-                    "nombre": "Canción 2",
-                    "ruta": "02-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "From Finner",
+                    "ruta": "FromFinner.mp3",
+                    "duracion": "3:43"
                 },
                 {
                     "id": 3,
-                    "nombre": "Canción 3",
-                    "ruta": "03-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "King And Lionheart",
+                    "ruta": "KingAndLionheart.mp3",
+                    "duracion": "4:30"
                 },
                 {
                     "id": 4,
-                    "nombre": "Canción 4",
-                    "ruta": "04-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "Lakehouse",
+                    "ruta": "Lakehouse.mp3",
+                    "duracion": "4:33"
                 },
                 {
                     "id": 5,
-                    "nombre": "Canción 5",
-                    "ruta": "05-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "Little Taks",
+                    "ruta": "LittleTalks.mp3",
+                    "duracion": "4:16"
+                },
+                {
+                    "id": 6,
+                    "nombre": "Love Love Love",
+                    "ruta": "LoveLoveLove.mp3",
+                    "duracion": "3:55"
+                },
+                {
+                    "id": 7,
+                    "nombre": "Numb Bears",
+                    "ruta": "NumbBears.mp3",
+                    "duracion": "2:42"
+                },
+                {
+                    "id": 8,
+                    "nombre": "Sinking Man",
+                    "ruta": "SinkingMan.mp3",
+                    "duracion": "2:45"
+                },
+                {
+                    "id": 9,
+                    "nombre": "Six Weeks",
+                    "ruta": "SixWeeks.mp3",
+                    "duracion": "5:31"
+                },
+                {
+                    "id": 10,
+                    "nombre": "Sloom",
+                    "ruta": "Sloom.mp3",
+                    "duracion": "4:41"
+                },
+                {
+                    "id": 11,
+                    "nombre": "Yellow Light",
+                    "ruta": "YellowLight.mp3",
+                    "duracion": "4:46"
+                },
+                {
+                    "id": 12,
+                    "nombre": "Yor Bones",
+                    "ruta": "YourBones.mp3",
+                    "duracion": "4:07"
                 }
             ]
         },
         {
             "id": 2,
-            "nombreAlbum": "Album 2",
-            "artista": "Artista 2",
-            "fecha_lanzamiento": "8 de Julio de 2017",
-            "cantidad_canciones": 19,
-            "duracion": "54:14",
-            "rutaImagen": "album2.jpg",
+            "nombreAlbum": "Sick Boy",
+            "artista": "The Chainsmokers",
+            "fecha_lanzamiento": "14 de Diciembre de 2018",
+            "cantidad_canciones": 10,
+            "duracion": "32:46",
+            "rutaImagen": "SickBoy.jpg",
             "color": "red",
             "canciones": [
                 {
                     "id": 1,
-                    "nombre": "Canción 1",
-                    "ruta": "01-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "Beach House",
+                    "ruta": "BeachHouse.mp3",
+                    "duracion": "3:26"
                 },
                 {
                     "id": 2,
-                    "nombre": "Canción 2",
-                    "ruta": "02-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "Everybody Hates Me",
+                    "ruta": "EverybodyHatesMe.mp3",
+                    "duracion": "3:45"
                 },
                 {
                     "id": 3,
-                    "nombre": "Canción 3",
-                    "ruta": "03-Cancion.mp3",
-                    "duracion": ""
+                    "nombre": "Hope",
+                    "ruta": "Hope.mp3",
+                    "duracion": "3:00"
+                },
+                {
+                    "id": 4,
+                    "nombre": "Save Yourself",
+                    "ruta": "SaveYourself.mp3",
+                    "duracion": "3:30"
+                },
+                {
+                    "id": 5,
+                    "nombre": "Sick Boy",
+                    "ruta": "SickBoy.mp3",
+                    "duracion": "3:14"
+                },
+                {
+                    "id": 6,
+                    "nombre": "Side Effects",
+                    "ruta": "SideEffects.mp3",
+                    "duracion": "2:54"
+                },
+                {
+                    "id": 7,
+                    "nombre": "Siren",
+                    "ruta": "Siren.mp3",
+                    "duracion": "2:55"
+                },
+                {
+                    "id": 8,
+                    "nombre": "Somebody",
+                    "ruta": "Somebody.mp3",
+                    "duracion": "3:42"
+                },
+                {
+                    "id": 9,
+                    "nombre": "This Feeling",
+                    "ruta": "ThisFeeling.mp3",
+                    "duracion": "3:16"
+                },
+                {
+                    "id": 10,
+                    "nombre": "You Owe Me",
+                    "ruta": "YouOweMe.mp3",
+                    "duracion": "3:15"
                 }
             ]
         },
@@ -241,39 +325,108 @@
             ]
         }
     ],
-
-    "sencillas": [
-        {
-            "id": 1,
-            "nombre": "Canción 1",
-            "ruta": "01-Cancion.mp3",
-            "duracion": ""
-        },
-        {
-            "id": 2,
-            "nombre": "Canción 2",
-            "ruta": "02-Cancion.mp3",
-            "duracion": ""
-        },
-        {
-            "id": 3,
-            "nombre": "Hookah",
-            "artista": "Faxu & Chef C",
-            "fecha_lanzamiento": "20 de Enero de 2022",
-            "rutaImagen": "Hookah Cover.jpg",
-            "color": "blue",
-            "ruta": "Hookah.mp3",
-            "duracion": "2:16"
-        },
-        {
-            "id": 4,
-            "nombre": "Tofu Delivery",
-            "artista": "Orslok & Rojuu",
-            "fecha_lanzamiento": "29 de Octubre de 2021",
-            "rutaImagen": "Tofu Delivery Cover.jpg",
-            "color": "red",
-            "ruta": "Tofu Delivery.mp3",
-            "duracion": "3:04"
-        }
-    ]
+    "sencillas": {
+        "color": "red",
+        "canciones": [
+            {
+                "id": 1,
+                "nombre": "Goddamn",
+                "artista": "Tyga",
+                "fecha_lanzamiento": "23 de Abril de 2019",
+                "rutaImagen": "Goddamn.jpg",
+                "ruta": "Goddamn.mp3",
+                "duracion": "2:36"
+            },
+            {
+                "id": 2,
+                "nombre": "CHATARRA",
+                "artista": "Waor ft. El Jincho, Brawler",
+                "fecha_lanzamiento": "30 de Julio de 2021",
+                "rutaImagen": "Chatarra.jpg",
+                "ruta": "Chatarra.mp3",
+                "duracion": "3:28"
+            },
+            {
+                "id": 3,
+                "nombre": "Hookah",
+                "artista": "Faxu & Chef C",
+                "fecha_lanzamiento": "20 de Enero de 2022",
+                "rutaImagen": "Hookah Cover.jpg",
+                "ruta": "Hookah.mp3",
+                "duracion": "2:16"
+            },
+            {
+                "id": 4,
+                "nombre": "Tofu Delivery",
+                "artista": "Orslok & Rojuu",
+                "fecha_lanzamiento": "29 de Octubre de 2021",
+                "rutaImagen": "Tofu Delivery Cover.jpg",
+                "ruta": "Tofu Delivery.mp3",
+                "duracion": "3:04"
+            },
+            {
+                "id": 5,
+                "nombre": "My House",
+                "artista": "Flo Rida",
+                "fecha_lanzamiento": "24 de Septiembre de 2015",
+                "rutaImagen": "MyHouse.jpg",
+                "ruta": "MyHouse.mp3",
+                "duracion": "3:16"
+            },
+            {
+                "id": 6,
+                "nombre": "MATAFAKA",
+                "artista": "Unknown Brain ft. Marvin Divine",
+                "fecha_lanzamiento": "18 de Marzo de 2017",
+                "rutaImagen": "Matafaka.jpg",
+                "ruta": "Matafaka.mp3",
+                "duracion": "4:07"
+            },
+            {
+                "id": 7,
+                "nombre": "Felicidad",
+                "artista": "Shotta ft. Morodo",
+                "fecha_lanzamiento": "31 de Marzo de 2014",
+                "rutaImagen": "Felicidad.jpg",
+                "ruta": "Felicidad.mp3",
+                "duracion": "3:31"
+            },
+            {
+                "id": 8,
+                "nombre": "Poquito a Poco",
+                "artista": "Gente de Zona ft. Zion & Lennox",
+                "fecha_lanzamiento": "20 de Diciembre de 2019",
+                "rutaImagen": "PoquitoAPoco.jpg",
+                "ruta": "PoquitoAPoco.mp3",
+                "duracion": "3:24"
+            },
+            {
+                "id": 9,
+                "nombre": "Warm",
+                "artista": "Moncrieff",
+                "fecha_lanzamiento": "21 de Enero de 2022",
+                "rutaImagen": "Warm.jpg",
+                "ruta": "Warm.mp3",
+                "duracion": "3:01"
+            },
+            {
+                "id": 10,
+                "nombre": "Un Pobre Con Dinero",
+                "artista": "SFDK",
+                "fecha_lanzamiento": "13 de Diciembre de 2019",
+                "rutaImagen": "UnPobreConDinero.jpg",
+                "ruta": "UnPobreConDinero.mp3",
+                "duracion": "3:24"
+            },
+            {
+                "id": 11,
+                "nombre": "Nancy Mulligan",
+                "artista": "Ed Sheeran",
+                "fecha_lanzamiento": "3 de Marzo de 2017",
+                "rutaImagen": "NancyMulligan.jpg",
+                "ruta": "NancyMulligan.mp3",
+                "duracion": "2:59"
+            }
+        ]
+    }
 }
