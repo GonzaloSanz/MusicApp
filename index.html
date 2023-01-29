@@ -5,15 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music App</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./css/index.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container-fluid p-0">
-        <div class="bg-success">Hola 1</div>
-        <div class="bg-primary col-2">Hola 1</div>
-        <div class="bg-danger col-10">Hola 1</div>
+    <div class="w-full h-screen lg:flex lg:flex-wrap">
+        <div class="bg-black text-white lg:order-2 lg:w-3/4 xl:w-5/6">Principal</div>
+        <div class="w-full h-24 bg-blue-600 fixed bottom-24 text-white lg:order-3 lg:w-full lg:bottom-0">Reproductor</div>
+        <div class="w-full h-24 bg-red-600 fixed bottom-0 text-white lg:order-1 lg:static lg:w-1/4 lg:h-full xl:w-1/6">Menú</div>
     </div>
     <script type="text/javascript" src="js/app.js"></script>
 </body>
