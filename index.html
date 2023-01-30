@@ -8,25 +8,57 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./css/index.css">
 </head>
-<body>
-    <div class="w-full h-screen lg:flex lg:flex-wrap">
-        <div class="bg-neutral-800 text-white lg:order-2 lg:w-3/4 xl:w-5/6 p-8 lg:h-full lg:overflow-scroll">
-            <h3 class="my-5 text-2xl md:text-3xl font-bold">Descubre Nuevos Álbumes</h3>
+<body class="overflow-y-hidden">
+    <div class="w-full lg:h-screen lg:flex lg:flex-wrap">
+        <div class="bg-neutral-800 text-white lg:order-2 lg:w-3/4 xl:w-5/6 p-6 lg:p-8 h-screen overflow-scroll">
+            <h3 class="my-7 text-2xl md:text-4xl font-bold">Descubre Nuevos Álbumes</h3>
             <div id="albumes-principal">
-                <div id="album" class="mb-9">
+                <div id="album" class="cursor-pointer mb-9">
                     <div>
-                        <img class="w-25" src="img/albumes/sickboy.jpg" alt="Imagen Album">
+                        <img class="rounded-lg" src="img/albumes/sickboy.jpg" alt="Imagen Album">
                     </div>
+                    <p class="text-lg my-4 text-center">Sickboy - The Chainsmokers</p>
                 </div>
-                <div id="album" class="mb-9">
+                <div id="album" class="cursor-pointer mb-9">
                     <div>
-                        <img class="w-25" src="img/albumes/myheadisananimal.jpg" alt="Imagen Album">
+                        <img class="rounded-lg" src="img/albumes/myheadisananimal.jpg" alt="Imagen Album">
                     </div>
+                    <p class="text-lg my-4 text-center">My Head Is An Animal - Of Monsters And Men</p>
+                </div>
+                <div id="album" class="cursor-pointer mb-9">
+                    <div>
+                        <img class="rounded-lg" src="img/albumes/sickboy.jpg" alt="Imagen Album">
+                    </div>
+                    <p class="text-lg my-4 text-center">Sickboy - The Chainsmokers</p>
+                </div>
+                <div id="album" class="cursor-pointer mb-9">
+                    <div>
+                        <img class="rounded-lg" src="img/albumes/myheadisananimal.jpg" alt="Imagen Album">
+                    </div>
+                    <p class="text-lg my-4 text-center">My Head Is An Animal - Of Monsters And Men</p>
                 </div>
             </div>
+
+            <h3 class="my-7 text-2xl md:text-4xl font-bold">Nuestras Canciones Favoritas</h3>
+            <div id="canciones-principal">
+
+            </div>
         </div>
-        <div class="w-full h-24 bg-blue-600 fixed bottom-24 text-white lg:order-3 lg:w-full lg:bottom-0">Reproductor</div>
-        <div class="w-full h-24 bg-red-600 fixed bottom-0 text-white lg:order-1 lg:static lg:w-1/4 lg:h-full xl:w-1/6">Menú</div>
+        <div class="hidden w-full h-24 bg-blue-600 fixed bottom-24 text-white lg:order-3 lg:w-full lg:bottom-0">Reproductor</div>
+        <div class="w-full h-24 flex bg-black fixed bottom-0 text-white lg:order-1 lg:static lg:w-1/4 lg:h-full xl:w-1/6 ">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M11 42q-1.25 0-2.125-.875T8 39V19.5q0-.7.325-1.35.325-.65.875-1.05l13-9.75q.4-.3.85-.45.45-.15.95-.15.5 0 .95.15.45.15.85.45l13 9.75q.55.4.875 1.05.325.65.325 1.35V39q0 1.25-.875 2.125T37 42h-9V28h-8v14Z"/></svg>
+                <p>Inicio</p>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24 32.2q3.5 0 6-2.375T32.5 24q0-3.55-2.475-6.025Q27.55 15.5 24 15.5q-3.45 0-5.825 2.5T15.8 24q0 3.45 2.375 5.825T24 32.2Zm0-6.2q-.85 0-1.425-.575Q22 24.85 22 24q0-.85.575-1.425Q23.15 22 24 22q.85 0 1.425.575Q26 23.15 26 24q0 .85-.575 1.425Q24.85 26 24 26Zm0 18q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Z"/></svg>
+                <p>Álbumes</p>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M19.65 42q-3.15 0-5.325-2.175Q12.15 37.65 12.15 34.5q0-3.15 2.175-5.325Q16.5 27 19.65 27q1.4 0 2.525.4t1.975 1.1V9q0-1.25.875-2.125T27.15 6h5.35q1.4 0 2.375.975.975.975.975 2.375t-.975 2.4q-.975 1-2.375 1h-5.35V34.5q0 3.15-2.175 5.325Q22.8 42 19.65 42Z"/></svg>
+                <p>Canciones</p>
+            </div>
+        </div>
     </div>
     <script type="text/javascript" src="js/app.js"></script>
 </body>
