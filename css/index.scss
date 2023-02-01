@@ -1,1 +1,17 @@
 @import "partials/reset.scss";
+
+body {
+    font-size: 100%;
+}
+
+#logo {
+    fill: url(#myGradient);
+}
+
+svg{
+    width: 40px;
+}
+
+#play{
+    width: 3.5em;
+}
