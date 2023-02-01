@@ -6,4 +6,20 @@
 
 svg {
   fill: white;
+}
+
+body {
+  font-size: 100%;
+}
+
+#logo {
+  fill: url(#myGradient);
+}
+
+svg {
+  width: 40px;
+}
+
+#play {
+  width: 3.5em;
 }/*# sourceMappingURL=index.css.map */
