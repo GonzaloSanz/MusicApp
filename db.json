@@ -36,7 +36,7 @@
                 },
                 {
                     "id": 5,
-                    "nombre": "Little Taks",
+                    "nombre": "Little Talks",
                     "ruta": "LittleTalks.mp3",
                     "duracion": "4:16"
                 },
@@ -163,19 +163,19 @@
             "fecha_lanzamiento": "25 de Junio de 2021",
             "cantidad_canciones": 13,
             "duracion": "44:02",
-            "rutaImagen": "Vice Versa Cover.jpg",
-            "color": "purple",
+            "rutaImagen": "VICEVERSA.jpg",
+            "color": "#00d0fd",
             "canciones": [
                 {
                     "id": 1,
                     "nombre": "Todo De Ti",
-                    "ruta": "Todo De Ti.mp3",
+                    "ruta": "TodoDeTi.mp3",
                     "duracion": "3:19"
                 },
                 {
                     "id": 2,
                     "nombre": "Sexo Virtual",
-                    "ruta": "Sexo Virtual.mp3",
+                    "ruta": "SexoVirtual.mp3",
                     "duracion": "3:28"
                 },
                 {
@@ -187,25 +187,25 @@
                 {
                     "id": 4,
                     "nombre": "2 Catorce",
-                    "ruta": "2 Catorce.mp3",
+                    "ruta": "2Catorce.mp3",
                     "duracion": "3:25"
                 },
                 {
                     "id": 5,
                     "nombre": "Aquel Nap ZzZz",
-                    "ruta": "Aquel Nap ZzZz.mp3",
+                    "ruta": "AquelNapZzZz.mp3",
                     "duracion": "4:55"
                 },
                 {
                     "id": 6,
                     "nombre": "Cúrame",
-                    "ruta": "Cúrame.mp3",
+                    "ruta": "Curame.mp3",
                     "duracion": "2:44"
                 },
                 {
                     "id": 7,
                     "nombre": "Cosa Guapa",
-                    "ruta": "Cosa Guapa.mp3",
+                    "ruta": "CosaGuapa.mp3",
                     "duracion": "4:15"
                 },
                 {
@@ -217,25 +217,25 @@
                 {
                     "id": 9,
                     "nombre": "Cuándo Fue",
-                    "ruta": "Cuándo Fue.mp3",
+                    "ruta": "CuandoFue.mp3",
                     "duracion": "2:48"
                 },
                 {
                     "id": 10,
                     "nombre": "La Old Skul",
-                    "ruta": "La Old Skul.mp3",
+                    "ruta": "LaOldSkul.mp3",
                     "duracion": "3:34"
                 },
                 {
                     "id": 11,
                     "nombre": "Y Eso",
-                    "ruta": "Y Eso.mp3",
+                    "ruta": "YEso.mp3",
                     "duracion": "3:20"
                 },
                 {
                     "id": 12,
                     "nombre": "Tengo un Pal",
-                    "ruta": "Tengo un Pal.mp3",
+                    "ruta": "TengoUnPal.mp3",
                     "duracion": "3:15"
                 },
                 {
@@ -253,13 +253,13 @@
             "fecha_lanzamiento": "9 de Septiembre de 2022",
             "cantidad_canciones": 11,
             "duracion": "38:53",
-            "rutaImagen": "ICYMI Cover.jpg",
-            "color": "yellow",
+            "rutaImagen": "ICYMI.jpg",
+            "color": "#e6d501",
             "canciones": [
                 {
                     "id": 1,
                     "nombre": "A Call",
-                    "ruta": "A Call.mp3",
+                    "ruta": "ACall.mp3",
                     "duracion": "2:07"
                 },
                 {
@@ -271,25 +271,25 @@
                 {
                     "id": 3,
                     "nombre": "Sci-Fi",
-                    "ruta": "Sci-Fi.mp3",
+                    "ruta": "SciFi.mp3",
                     "duracion": "2:56"
                 },
                 {
                     "id": 4,
                     "nombre": "Modern Warfare",
-                    "ruta": "Modern Warfare.mp3",
+                    "ruta": "ModernWarfare.mp3",
                     "duracion": "3:22"
                 },
                 {
                     "id": 5,
                     "nombre": "Waiting Room",
-                    "ruta": "Waiting Room.mp3",
+                    "ruta": "WaitingRoom.mp3",
                     "duracion": "2:13"
                 },
                 {
                     "id": 6,
                     "nombre": "Closer 2",
-                    "ruta": "Closer 2.mp3",
+                    "ruta": "Closer2.mp3",
                     "duracion": "3:18"
                 },
                 {
@@ -301,7 +301,7 @@
                 {
                     "id": 8,
                     "nombre": "Call Me Back",
-                    "ruta": "Call Me Back.mp3",
+                    "ruta": "CallMeBack.mp3",
                     "duracion": "6:20"
                 },
                 {
@@ -319,8 +319,62 @@
                 {
                     "id": 11,
                     "nombre": "Reaching 2",
-                    "ruta": "Reaching 2.mp3",
+                    "ruta": "Reaching2.mp3",
                     "duracion": "2:58"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "nombreAlbum": "Milagro",
+            "artista": "DELLAFUENTE",
+            "fecha_lanzamiento": "25 de Noviembre de 2021",
+            "cantidad_canciones": 7,
+            "duracion": "24:50",
+            "rutaImagen": "Milagro.jpg",
+            "color": "#3381b7",
+            "canciones": [
+                {
+                    "id": 1,
+                    "nombre": "Milagro",
+                    "ruta": "Milagro.mp3",
+                    "duracion": "2:43"
+                },
+                {
+                    "id": 2,
+                    "nombre": "Sanuk Sabai Saduak",
+                    "ruta": "SanukSabaiSaduak.mp3",
+                    "duracion": "3:09"
+                },
+                {
+                    "id": 3,
+                    "nombre": "León Con Uñas De Gel",
+                    "ruta": "LeonConUñasDeGel.mp3",
+                    "duracion": "3:45"
+                },
+                {
+                    "id": 4,
+                    "nombre": "Dime Si Con Eso Vale",
+                    "ruta": "DimeSiConEsoVale.mp3",
+                    "duracion": "3:26"
+                },
+                {
+                    "id": 5,
+                    "nombre": "Sin Faltar A La Verdad",
+                    "ruta": "SinFaltarALaVerdad.mp3",
+                    "duracion": "4:34"
+                },
+                {
+                    "id": 6,
+                    "nombre": "Nana Del Miedo",
+                    "ruta": "NanaDelMiedo.mp3",
+                    "duracion": "3:39"
+                },
+                {
+                    "id": 7,
+                    "nombre": "Un Diablo En El Infierno",
+                    "ruta": "UnDiabloEnElInfierno.mp3",
+                    "duracion": "3:31"
                 }
             ]
         }
@@ -351,7 +405,7 @@
                 "nombre": "Hookah",
                 "artista": "Faxu & Chef C",
                 "fecha_lanzamiento": "20 de Enero de 2022",
-                "rutaImagen": "Hookah Cover.jpg",
+                "rutaImagen": "Hookah.jpg",
                 "ruta": "Hookah.mp3",
                 "duracion": "2:16"
             },
@@ -360,8 +414,8 @@
                 "nombre": "Tofu Delivery",
                 "artista": "Orslok & Rojuu",
                 "fecha_lanzamiento": "29 de Octubre de 2021",
-                "rutaImagen": "Tofu Delivery Cover.jpg",
-                "ruta": "Tofu Delivery.mp3",
+                "rutaImagen": "TofuDelivery.jpg",
+                "ruta": "TofuDelivery.mp3",
                 "duracion": "3:04"
             },
             {
@@ -426,6 +480,15 @@
                 "rutaImagen": "NancyMulligan.jpg",
                 "ruta": "NancyMulligan.mp3",
                 "duracion": "2:59"
+            },
+            {
+                "id": 12,
+                "nombre": "Si Tu Kiere",
+                "artista": "Soto Asa",
+                "fecha_lanzamiento": "10 de Septiembre de 2021",
+                "rutaImagen": "SiTuKiere.jpg",
+                "ruta": "SiTuKiere.mp3",
+                "duracion": "3:01"
             }
         ]
     }
