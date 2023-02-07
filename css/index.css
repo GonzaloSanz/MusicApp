@@ -16,12 +16,26 @@ body {
   fill: url(#myGradient);
 }
 
-svg {
-  width: 40px;
+#shuffle {
+  fill: url(#myGradient);
+  width: 1.875em;
+}
+
+#repeat {
+  width: 1.875em;
+}
+
+#volume {
+  width: 1.875em;
 }
 
 #play {
-  width: 3.5em;
+  width: 3em;
+}
+
+svg {
+  width: 2.5em;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {
@@ -38,4 +52,12 @@ svg {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #bbb;
+}
+
+.h-custom {
+  height: 87vh;
+}
+
+.range {
+  accent-color: #fff;
 }/*# sourceMappingURL=index.css.map */
