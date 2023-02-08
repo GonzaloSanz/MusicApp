@@ -13,6 +13,9 @@ let sencillas = [];
 
 const contenidoPrincipal = document.querySelector('#contenido-principal');
 
+const homeMenu = document.querySelector('#menu-home');
+const albumesMenu = document.querySelector('#menu-albumes');
+const cancionesMenu = document.querySelector('#menu-canciones');
 /*
  ***********************************************************
  *                                                         *
@@ -24,6 +27,9 @@ const contenidoPrincipal = document.querySelector('#contenido-principal');
 window.addEventListener('load', () => {
     obtenerAlbumes();
     obtenerSencillas();
+
+    // Acciones del menú
+
 });
 
 /*
@@ -79,7 +85,7 @@ function cargarHome() {
     contenidoPrincipal.appendChild(tituloSeccionAlbumes);
     contenidoPrincipal.appendChild(contenedorAlbumes);
 
-    // 4 álbumes aleatorios
+    // Generar cuatro álbumes aleatorios
     let albumesHome = [];
     let aleatorio;
     let nuevoAlbum;
@@ -96,6 +102,7 @@ function cargarHome() {
         }
     }
 
+    // Mostrar álbumes
     albumesHome.forEach(album => {
         const { id, nombreAlbum, artista, rutaImagen } = album;
 
@@ -137,24 +144,65 @@ function cargarHome() {
     contenidoPrincipal.appendChild(tituloSeccionCanciones);
     contenidoPrincipal.appendChild(contenedorCanciones);
 
-    // 4 álbumes aleatorios
+    // Generar ocho canciones aleatorias
     let cancionesHome = [];
     let nuevaCancion;
 
-    // while (cancionesHome.length <= 3) {
-    //     aleatorio = numeroAleatorio(1, 5);
+    while (cancionesHome.length <= 7) {
+        aleatorio = numeroAleatorio(1, 13);
 
-    //     nuevoAlbum = canciones.find(album => album.id === aleatorio);
+        nuevaCancion = sencillas.find(cancion => cancion.id === aleatorio);
 
-    //     if (cancionesHome.find(album => album.id === nuevoAlbum.id)) {
-    //         continue;
-    //     } else {
-    //         cancionesHome = [...cancionesHome, nuevoAlbum];
-    //     }
-    // }
+        if (cancionesHome.find(cancion => cancion.id === nuevaCancion.id)) {
+            continue;
+        } else {
+            cancionesHome = [...cancionesHome, nuevaCancion];
+        }
+    }
 
+    // Mostrar canciones
+    cancionesHome.forEach((cancion, index) => {
+        const { id, nombre, artista, rutaImagen } = cancion;
+
+        const divCancion = document.createElement('div');
+        divCancion.classList.add('bg-zinc-900', 'p-5', 'rounded-lg', 'overflow-hidden', 'w-4/5', 'justify-self-center', 'ease-in-out', 'duration-500', 'sm:w-full', 
+            'md:cursor-pointer', 'md:hover:-translate-y-4', 'ease-in-out', 'duration-500', 'md:mx-0');
+        
+        if(index >= 4 && index < 6) {
+            divCancion.classList.add('hidden');
+            divCancion.classList.add('sm:block');
+        }
+
+        if(index >= 6) {
+            divCancion.classList.add('hidden');
+            divCancion.classList.add('lg:block');
+        }
+
+        divCancion.setAttribute('id', id);
+
+        const imagen = document.createElement('img');
+        imagen.src = `img/sencillas/${rutaImagen}`;
+        imagen.alt = 'Imagen de la canción';
+
+        const descripcion = document.createElement('div');
+
+        const nombreCancion = document.createElement('p');
+        nombreCancion.classList.add('text-xl', 'font-semibold', 'mt-4', 'mb-1');
+        nombreCancion.textContent = nombre;
+
+        const autor = document.createElement('p');
+        autor.classList.add('text-md', 'text-zinc-400');
+        autor.textContent = artista;
+
+        descripcion.appendChild(nombreCancion);
+        descripcion.appendChild(autor);
+
+        divCancion.appendChild(imagen);
+        divCancion.appendChild(descripcion);
+
+        contenedorCanciones.appendChild(divCancion);
+    });
 }
-
 
 function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);

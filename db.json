@@ -436,12 +436,12 @@
         },
         {
             "id": 7,
-            "nombre": "Felicidad",
-            "artista": "Shotta ft. Morodo",
-            "fecha_lanzamiento": "31 de Marzo de 2014",
-            "rutaImagen": "Felicidad.jpg",
-            "ruta": "Felicidad.mp3",
-            "duracion": "3:31"
+            "nombre": "Bumaye",
+            "artista": "Toteking",
+            "fecha_lanzamiento": "14 de Septiembre de 2021",
+            "rutaImagen": "Bumaye.jpg",
+            "ruta": "Bumaye.mp3",
+            "duracion": "3:37"
         },
         {
             "id": 8,
@@ -487,6 +487,15 @@
             "rutaImagen": "SiTuKiere.jpg",
             "ruta": "SiTuKiere.mp3",
             "duracion": "3:01"
+        },
+        {
+            "id": 13,
+            "nombre": "Floss In The Bank",
+            "artista": "Tyga",
+            "fecha_lanzamiento": "15 de Enero de 2019",
+            "rutaImagen": "FlossInTheBank.jpg",
+            "ruta": "FlossInTheBank.mp3",
+            "duracion": "2:31"
         }
     ]
 }
