@@ -33,6 +33,10 @@ body {
   width: 3em;
 }
 
+#timer {
+  width: 1.875em;
+}
+
 svg {
   width: 2.5em;
   cursor: pointer;
@@ -40,7 +44,7 @@ svg {
 
 ::-webkit-scrollbar {
   width: 14px;
-  background: rgba(241, 241, 241, 0);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -56,6 +60,14 @@ svg {
 
 .h-custom {
   height: 87vh;
+}
+
+.cover-container {
+  background: linear-gradient(#00d0fd, #0a647c);
+}
+
+.h-cover-img {
+  height: 30vh;
 }
 
 .range {
