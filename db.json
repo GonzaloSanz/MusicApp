@@ -379,117 +379,114 @@
             ]
         }
     ],
-    "sencillas": {
-        "color": "red",
-        "canciones": [
-            {
-                "id": 1,
-                "nombre": "Goddamn",
-                "artista": "Tyga",
-                "fecha_lanzamiento": "23 de Abril de 2019",
-                "rutaImagen": "Goddamn.jpg",
-                "ruta": "Goddamn.mp3",
-                "duracion": "2:36"
-            },
-            {
-                "id": 2,
-                "nombre": "CHATARRA",
-                "artista": "Waor ft. El Jincho, Brawler",
-                "fecha_lanzamiento": "30 de Julio de 2021",
-                "rutaImagen": "Chatarra.jpg",
-                "ruta": "Chatarra.mp3",
-                "duracion": "3:28"
-            },
-            {
-                "id": 3,
-                "nombre": "Hookah",
-                "artista": "Faxu & Chef C",
-                "fecha_lanzamiento": "20 de Enero de 2022",
-                "rutaImagen": "Hookah.jpg",
-                "ruta": "Hookah.mp3",
-                "duracion": "2:16"
-            },
-            {
-                "id": 4,
-                "nombre": "Tofu Delivery",
-                "artista": "Orslok & Rojuu",
-                "fecha_lanzamiento": "29 de Octubre de 2021",
-                "rutaImagen": "TofuDelivery.jpg",
-                "ruta": "TofuDelivery.mp3",
-                "duracion": "3:04"
-            },
-            {
-                "id": 5,
-                "nombre": "My House",
-                "artista": "Flo Rida",
-                "fecha_lanzamiento": "24 de Septiembre de 2015",
-                "rutaImagen": "MyHouse.jpg",
-                "ruta": "MyHouse.mp3",
-                "duracion": "3:16"
-            },
-            {
-                "id": 6,
-                "nombre": "MATAFAKA",
-                "artista": "Unknown Brain ft. Marvin Divine",
-                "fecha_lanzamiento": "18 de Marzo de 2017",
-                "rutaImagen": "Matafaka.jpg",
-                "ruta": "Matafaka.mp3",
-                "duracion": "4:07"
-            },
-            {
-                "id": 7,
-                "nombre": "Felicidad",
-                "artista": "Shotta ft. Morodo",
-                "fecha_lanzamiento": "31 de Marzo de 2014",
-                "rutaImagen": "Felicidad.jpg",
-                "ruta": "Felicidad.mp3",
-                "duracion": "3:31"
-            },
-            {
-                "id": 8,
-                "nombre": "Poquito a Poco",
-                "artista": "Gente de Zona ft. Zion & Lennox",
-                "fecha_lanzamiento": "20 de Diciembre de 2019",
-                "rutaImagen": "PoquitoAPoco.jpg",
-                "ruta": "PoquitoAPoco.mp3",
-                "duracion": "3:24"
-            },
-            {
-                "id": 9,
-                "nombre": "Warm",
-                "artista": "Moncrieff",
-                "fecha_lanzamiento": "21 de Enero de 2022",
-                "rutaImagen": "Warm.jpg",
-                "ruta": "Warm.mp3",
-                "duracion": "3:01"
-            },
-            {
-                "id": 10,
-                "nombre": "Un Pobre Con Dinero",
-                "artista": "SFDK",
-                "fecha_lanzamiento": "13 de Diciembre de 2019",
-                "rutaImagen": "UnPobreConDinero.jpg",
-                "ruta": "UnPobreConDinero.mp3",
-                "duracion": "3:24"
-            },
-            {
-                "id": 11,
-                "nombre": "Nancy Mulligan",
-                "artista": "Ed Sheeran",
-                "fecha_lanzamiento": "3 de Marzo de 2017",
-                "rutaImagen": "NancyMulligan.jpg",
-                "ruta": "NancyMulligan.mp3",
-                "duracion": "2:59"
-            },
-            {
-                "id": 12,
-                "nombre": "Si Tu Kiere",
-                "artista": "Soto Asa",
-                "fecha_lanzamiento": "10 de Septiembre de 2021",
-                "rutaImagen": "SiTuKiere.jpg",
-                "ruta": "SiTuKiere.mp3",
-                "duracion": "3:01"
-            }
-        ]
-    }
+    "sencillas": [
+        {
+            "id": 1,
+            "nombre": "Goddamn",
+            "artista": "Tyga",
+            "fecha_lanzamiento": "23 de Abril de 2019",
+            "rutaImagen": "Goddamn.jpg",
+            "ruta": "Goddamn.mp3",
+            "duracion": "2:36"
+        },
+        {
+            "id": 2,
+            "nombre": "CHATARRA",
+            "artista": "Waor ft. El Jincho, Brawler",
+            "fecha_lanzamiento": "30 de Julio de 2021",
+            "rutaImagen": "Chatarra.jpg",
+            "ruta": "Chatarra.mp3",
+            "duracion": "3:28"
+        },
+        {
+            "id": 3,
+            "nombre": "Hookah",
+            "artista": "Faxu & Chef C",
+            "fecha_lanzamiento": "20 de Enero de 2022",
+            "rutaImagen": "Hookah.jpg",
+            "ruta": "Hookah.mp3",
+            "duracion": "2:16"
+        },
+        {
+            "id": 4,
+            "nombre": "Tofu Delivery",
+            "artista": "Orslok & Rojuu",
+            "fecha_lanzamiento": "29 de Octubre de 2021",
+            "rutaImagen": "TofuDelivery.jpg",
+            "ruta": "TofuDelivery.mp3",
+            "duracion": "3:04"
+        },
+        {
+            "id": 5,
+            "nombre": "My House",
+            "artista": "Flo Rida",
+            "fecha_lanzamiento": "24 de Septiembre de 2015",
+            "rutaImagen": "MyHouse.jpg",
+            "ruta": "MyHouse.mp3",
+            "duracion": "3:16"
+        },
+        {
+            "id": 6,
+            "nombre": "MATAFAKA",
+            "artista": "Unknown Brain ft. Marvin Divine",
+            "fecha_lanzamiento": "18 de Marzo de 2017",
+            "rutaImagen": "Matafaka.jpg",
+            "ruta": "Matafaka.mp3",
+            "duracion": "4:07"
+        },
+        {
+            "id": 7,
+            "nombre": "Felicidad",
+            "artista": "Shotta ft. Morodo",
+            "fecha_lanzamiento": "31 de Marzo de 2014",
+            "rutaImagen": "Felicidad.jpg",
+            "ruta": "Felicidad.mp3",
+            "duracion": "3:31"
+        },
+        {
+            "id": 8,
+            "nombre": "Poquito a Poco",
+            "artista": "Gente de Zona ft. Zion & Lennox",
+            "fecha_lanzamiento": "20 de Diciembre de 2019",
+            "rutaImagen": "PoquitoAPoco.jpg",
+            "ruta": "PoquitoAPoco.mp3",
+            "duracion": "3:24"
+        },
+        {
+            "id": 9,
+            "nombre": "Warm",
+            "artista": "Moncrieff",
+            "fecha_lanzamiento": "21 de Enero de 2022",
+            "rutaImagen": "Warm.jpg",
+            "ruta": "Warm.mp3",
+            "duracion": "3:01"
+        },
+        {
+            "id": 10,
+            "nombre": "Un Pobre Con Dinero",
+            "artista": "SFDK",
+            "fecha_lanzamiento": "13 de Diciembre de 2019",
+            "rutaImagen": "UnPobreConDinero.jpg",
+            "ruta": "UnPobreConDinero.mp3",
+            "duracion": "3:24"
+        },
+        {
+            "id": 11,
+            "nombre": "Nancy Mulligan",
+            "artista": "Ed Sheeran",
+            "fecha_lanzamiento": "3 de Marzo de 2017",
+            "rutaImagen": "NancyMulligan.jpg",
+            "ruta": "NancyMulligan.mp3",
+            "duracion": "2:59"
+        },
+        {
+            "id": 12,
+            "nombre": "Si Tu Kiere",
+            "artista": "Soto Asa",
+            "fecha_lanzamiento": "10 de Septiembre de 2021",
+            "rutaImagen": "SiTuKiere.jpg",
+            "ruta": "SiTuKiere.mp3",
+            "duracion": "3:01"
+        }
+    ]
 }
