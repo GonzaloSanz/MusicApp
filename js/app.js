@@ -40,6 +40,7 @@ window.addEventListener('load', () => {
     albumesMenu.addEventListener('click', () => {
         limpiarHTML(contenidoPrincipal);
 
+        contenidoPrincipal.classList.add('p-6');
         crearLogo();
         cargarAlbumes('Álbumes disponibles', albumes);
     });
@@ -47,6 +48,7 @@ window.addEventListener('load', () => {
     cancionesMenu.addEventListener('click', () => {
         limpiarHTML(contenidoPrincipal);
 
+        contenidoPrincipal.classList.add('p-6');
         crearLogo();
         cargarCanciones('Echa un vistazo a nuestras canciones', sencillas);
     });
@@ -90,6 +92,7 @@ async function obtenerSencillas() {
 }
 
 function cargarHome() {
+    contenidoPrincipal.classList.add('p-6');
     crearLogo();
 
     // Generar cuatro álbumes aleatorios
@@ -257,6 +260,7 @@ function crearLogo() {
 function mostrarAlbum(idAlbum) {
     const albumSeleccionado = albumes.find(album => album.id === idAlbum);
     
+    contenidoPrincipal.classList.remove('p-6');
     limpiarHTML(contenidoPrincipal);
 
     const {id, nombreAlbum, artista, fecha_lanzamiento, cantidad_canciones, duracion, rutaImagen, color, canciones} = albumSeleccionado;
