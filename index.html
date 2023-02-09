@@ -12,30 +12,15 @@
 <body class="overflow-y-hidden">
     <!-- Contenedor de la aplicación -->
     <div class="w-full lg:h-screen lg:flex lg:flex-wrap">
-        <!-- Contenedor principal -->
-        <div class="bg-neutral-800 text-white lg:order-2 lg:w-3/4 xl:w-5/6 p-6 pb-32 h-custom overflow-auto">
-            <!-- Logo -->
-            <div class="flex items-center mt-4 mb-8">
-                <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                    <path d="M19.65 42q-3.15 0-5.325-2.175Q12.15 37.65 12.15 34.5q0-3.15 2.175-5.325Q16.5 27 19.65 27q1.4 0 2.525.4t1.975 1.1V9q0-1.25.875-2.125T27.15 6h5.35q1.4 0 2.375.975.975.975.975 2.375t-.975 2.4q-.975 1-2.375 1h-5.35V34.5q0 3.15-2.175 5.325Q22.8 42 19.65 42Z" />
-                    <linearGradient id="myGradient" x1="0.4" y1="1" x2="1" y2="0">
-                        <stop offset="12%" stop-color="#ff7a00" />
-                        <stop offset="40%" stop-color="#ff0169" />
-                        <stop offset="70%" stop-color="#d300c5" />
-                        <stop offset="100%" stop-color="#7336f3" />
-                    </linearGradient>
-                </svg>
-                <p class="font-bold text-4xl">Music App</p>
-            </div>
 
-            <div id="contenido-principal"></div>
-        </div>
+        <!-- Contenedor principal -->
+        <div id="contenido-principal" class="bg-neutral-800 text-white lg:order-2 lg:w-3/4 xl:w-5/6 p-6 pb-32 h-custom overflow-auto"></div>
+
         <!-- Contenedor del Reproductor -->
-        <div
-            class="w-full h-[13%] fixed bottom-[13%] lg:order-3 lg:w-full lg:bottom-0 flex justify-center mb-2 lg:mb-0">
+        <div class="w-full h-[13%] fixed bottom-[13%] lg:order-3 lg:w-full lg:bottom-0 flex justify-center mb-2 lg:mb-0">
+
             <!-- Reproductor -->
-            <div
-                class="w-11/12 sm:w-5/6 md:w-4/6 px-2 h-full bg-neutral-600/95 lg:bg-neutral-600 text-white rounded-lg flex justify-between overflow-hidden sm:px-0 sm:pr-5 md:pr-6 lg:pr-0 lg:w-full lg:rounded-none">
+            <div class="w-11/12 sm:w-5/6 md:w-4/6 px-2 h-full bg-neutral-600/95 lg:bg-neutral-600 text-white rounded-lg flex justify-between overflow-hidden sm:px-0 sm:pr-5 md:pr-6 lg:pr-0 lg:w-full lg:rounded-none">
                 <div class="flex gap-3 items-center w-6/12 sm:w-8/12 h-full lg:gap-5 lg:w-3/12 lg:w-full">
                     <div class="h-full min-w-fit">
                         <img class="h-full hidden sm:block" src="img/albumes/myheadisananimal.jpg">
@@ -46,7 +31,8 @@
                         <p class="text-sm text-zinc-300">Of Monsters and Men</p>
                     </div>
                 </div>
-                <!-- Controles reproductor -->
+
+                <!-- Controles del reproductor -->
                 <div class="flex flex-wrap content-center justify-center items-center lg:w-5/12">
                     <div class="flex items-center justify-center lg:w-full lg:h-12">
                         <div class="hidden lg:block">
@@ -82,7 +68,8 @@
                         <span>3:55</span>
                     </div>
                 </div>
-                <!-- Controles volumen -->
+
+                <!-- Controles de volumen -->
                 <div class="hidden lg:flex lg:w-3/12 justify-end items-center pr-[38px]">
                     <div>
                         <svg id="volume" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -95,6 +82,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Menú  Principal -->
         <div
             class="w-full h-[13%] flex justify-center bg-black fixed bottom-0 lg:order-1 lg:static lg:w-1/4 lg:h-[87%] xl:w-1/6">
