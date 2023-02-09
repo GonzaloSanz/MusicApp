@@ -15,7 +15,8 @@ const contenidoPrincipal = document.querySelector('#contenido-principal');
 
 const homeMenu = document.querySelector('#menu-home');
 const albumesMenu = document.querySelector('#menu-albumes');
-const cancionesMenu = document.querySelector('#menu-canciones');
+const cancionesMenu = document.querySelector('#menu-sencillas');
+
 /*
  ***********************************************************
  *                                                         *
@@ -29,6 +30,20 @@ window.addEventListener('load', () => {
     obtenerSencillas();
 
     // Acciones del menú
+    homeMenu.addEventListener('click', () => {
+        limpiarHTML(contenidoPrincipal);
+        cargarHome();
+    });
+
+    albumesMenu.addEventListener('click', () => {
+        limpiarHTML(contenidoPrincipal);
+        cargarAlbumes('Álbumes disponibles', albumes);
+    });
+
+    cancionesMenu.addEventListener('click', () => {
+        limpiarHTML(contenidoPrincipal);
+        cargarCanciones('Echa un vistazo a nuestras canciones', sencillas);
+    });
 
 });
 
@@ -41,7 +56,6 @@ window.addEventListener('load', () => {
 */
 
 async function obtenerAlbumes() {
-
     fetch('db.json')
         .then(respuesta => respuesta.json())
         .then(resultado => {
@@ -55,7 +69,6 @@ async function obtenerAlbumes() {
 }
 
 async function obtenerSencillas() {
-
     fetch('db.json')
         .then(respuesta => respuesta.json())
         .then(resultado => {
@@ -71,20 +84,6 @@ async function obtenerSencillas() {
 }
 
 function cargarHome() {
-
-    limpiarHTML(contenidoPrincipal);
-
-    // Sección álbumes
-    const tituloSeccionAlbumes = document.createElement('h3');
-    tituloSeccionAlbumes.classList.add('my-6', 'text-2xl', 'font-bold', 'md:my-10', 'md:text-3xl');
-    tituloSeccionAlbumes.textContent = 'Descubre nuevos álbumes';
-
-    const contenedorAlbumes = document.createElement('div');
-    contenedorAlbumes.classList.add('grid', 'gap-4', 'gap-y-10', 'sm:grid-cols-2', 'md:grid-cols-3', 'lg:grid-cols-4');
-
-    contenidoPrincipal.appendChild(tituloSeccionAlbumes);
-    contenidoPrincipal.appendChild(contenedorAlbumes);
-
     // Generar cuatro álbumes aleatorios
     let albumesHome = [];
     let aleatorio;
@@ -102,8 +101,40 @@ function cargarHome() {
         }
     }
 
+    cargarAlbumes('Descubre nuevos álbumes', albumesHome);
+
+    // Generar ocho canciones aleatorias
+    let cancionesHome = [];
+    let nuevaCancion;
+
+    while (cancionesHome.length <= 7) {
+        aleatorio = numeroAleatorio(1, 13);
+
+        nuevaCancion = sencillas.find(cancion => cancion.id === aleatorio);
+
+        if (cancionesHome.find(cancion => cancion.id === nuevaCancion.id)) {
+            continue;
+        } else {
+            cancionesHome = [...cancionesHome, nuevaCancion];
+        }
+    }
+
+    cargarCanciones('Canciones del momento', cancionesHome, true);
+}
+
+function cargarAlbumes(titulo, albumes) {
+    const tituloSeccionAlbumes = document.createElement('h3');
+    tituloSeccionAlbumes.classList.add('my-6', 'text-2xl', 'font-bold', 'md:my-10', 'md:text-3xl');
+    tituloSeccionAlbumes.textContent = titulo;
+
+    const contenedorAlbumes = document.createElement('div');
+    contenedorAlbumes.classList.add('grid', 'gap-4', 'gap-y-10', 'sm:grid-cols-2', 'md:grid-cols-3', 'lg:grid-cols-4');
+
+    contenidoPrincipal.appendChild(tituloSeccionAlbumes);
+    contenidoPrincipal.appendChild(contenedorAlbumes);
+
     // Mostrar álbumes
-    albumesHome.forEach(album => {
+    albumes.forEach(album => {
         const { id, nombreAlbum, artista, rutaImagen } = album;
 
         const divAlbum = document.createElement('div');
@@ -132,11 +163,12 @@ function cargarHome() {
 
         contenedorAlbumes.appendChild(divAlbum);
     });
+}
 
-    // Sección canciones
+function cargarCanciones(titulo, canciones, contenidoReducido = false) {
     const tituloSeccionCanciones = document.createElement('h3');
     tituloSeccionCanciones.classList.add('my-6', 'text-2xl', 'font-bold', 'md:my-12', 'md:text-3xl');
-    tituloSeccionCanciones.textContent = 'Canciones del momento';
+    tituloSeccionCanciones.textContent = titulo;
 
     const contenedorCanciones = document.createElement('div');
     contenedorCanciones.classList.add('grid', 'gap-4', 'gap-y-10', 'sm:grid-cols-2', 'md:grid-cols-3', 'lg:grid-cols-4');
@@ -144,38 +176,24 @@ function cargarHome() {
     contenidoPrincipal.appendChild(tituloSeccionCanciones);
     contenidoPrincipal.appendChild(contenedorCanciones);
 
-    // Generar ocho canciones aleatorias
-    let cancionesHome = [];
-    let nuevaCancion;
-
-    while (cancionesHome.length <= 7) {
-        aleatorio = numeroAleatorio(1, 13);
-
-        nuevaCancion = sencillas.find(cancion => cancion.id === aleatorio);
-
-        if (cancionesHome.find(cancion => cancion.id === nuevaCancion.id)) {
-            continue;
-        } else {
-            cancionesHome = [...cancionesHome, nuevaCancion];
-        }
-    }
-
     // Mostrar canciones
-    cancionesHome.forEach((cancion, index) => {
+    canciones.forEach((cancion, index) => {
         const { id, nombre, artista, rutaImagen } = cancion;
 
         const divCancion = document.createElement('div');
-        divCancion.classList.add('bg-zinc-900', 'p-5', 'rounded-lg', 'overflow-hidden', 'w-4/5', 'justify-self-center', 'ease-in-out', 'duration-500', 'sm:w-full', 
+        divCancion.classList.add('bg-zinc-900', 'p-5', 'rounded-lg', 'overflow-hidden', 'w-4/5', 'justify-self-center', 'ease-in-out', 'duration-500', 'sm:w-full',
             'md:cursor-pointer', 'md:hover:-translate-y-4', 'ease-in-out', 'duration-500', 'md:mx-0');
-        
-        if(index >= 4 && index < 6) {
-            divCancion.classList.add('hidden');
-            divCancion.classList.add('sm:block');
-        }
 
-        if(index >= 6) {
-            divCancion.classList.add('hidden');
-            divCancion.classList.add('lg:block');
+        if (contenidoReducido) {
+            if (index >= 4 && index < 6) {
+                divCancion.classList.add('hidden');
+                divCancion.classList.add('sm:block');
+            }
+
+            if (index >= 6) {
+                divCancion.classList.add('hidden');
+                divCancion.classList.add('lg:block');
+            }
         }
 
         divCancion.setAttribute('id', id);
