@@ -24,6 +24,9 @@ audioCancion.volume = 0.5;
 const tiempoActual = document.querySelector('#tiempoActual');
 const tiempoRestante = document.querySelector('#tiempoRestante');
 
+//Reproductor
+
+
 // Controles canción
 const barraCancion = document.querySelector('#barraCancion');
 const btnPlay = document.querySelector('#btn-play');
@@ -274,7 +277,7 @@ function mostrarAlbum(idAlbum) {
     contenidoPrincipal.classList.remove('p-6');
     limpiarHTML(contenidoPrincipal);
 
-    const { id, nombreAlbum, artista, fecha_lanzamiento, cantidad_canciones, duracion, rutaImagen, color, canciones } = albumSeleccionado;
+    const { nombreAlbum, artista, fecha_lanzamiento, cantidad_canciones, duracion, rutaImagen, color, canciones } = albumSeleccionado;
 
     // Cabecera
     const divCabecera = document.createElement('div');
@@ -437,8 +440,9 @@ function reproducir(idAlbum, idCancion, ruta, duracion) {
         audioCancion.play();
 
         audioCancion.addEventListener('timeupdate', () => {
-            //tiempoActual.textContent = ;
+            tiempoActual.textContent = audioCancion.currentTime;
             //tiempoRestante.textContent = ;
+            
             barraCancion.value = audioCancion.currentTime;
             barraCancion.max = audioCancion.duration;
 
