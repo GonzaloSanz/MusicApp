@@ -13,9 +13,24 @@ let sencillas = [];
 
 const contenidoPrincipal = document.querySelector('#contenido-principal');
 
+// Accesos del menú
 const inicioMenu = document.querySelector('#menu-inicio');
 const albumesMenu = document.querySelector('#menu-albumes');
 const cancionesMenu = document.querySelector('#menu-sencillas');
+
+// Canción
+const audioCancion = document.querySelector('#audioCancion');
+audioCancion.volume = 0.5;
+const tiempoActual = document.querySelector('#tiempoActual');
+const tiempoRestante = document.querySelector('#tiempoRestante');
+
+// Controles canción
+const barraCancion = document.querySelector('#barraCancion');
+const btnPlay = document.querySelector('#btn-play');
+
+// Controles Volumen
+const barraVolumen = document.querySelector('#barraVolumen');
+const btnVolumen = document.querySelector('#btn-volumen');
 
 /*
  ***********************************************************
@@ -51,6 +66,12 @@ window.addEventListener('load', () => {
         crearLogo();
         cargarCanciones('Echa un vistazo a nuestras canciones', sencillas);
     });
+
+    // Controles canción
+    barraCancion.addEventListener('change', () => {
+        audioCancion.currentTime = barraCancion.value;
+    });
+
 
 });
 
@@ -249,11 +270,11 @@ function crearLogo() {
 
 function mostrarAlbum(idAlbum) {
     const albumSeleccionado = albumes.find(album => album.id === idAlbum);
-    
+
     contenidoPrincipal.classList.remove('p-6');
     limpiarHTML(contenidoPrincipal);
 
-    const {id, nombreAlbum, artista, fecha_lanzamiento, cantidad_canciones, duracion, rutaImagen, color, canciones} = albumSeleccionado;
+    const { id, nombreAlbum, artista, fecha_lanzamiento, cantidad_canciones, duracion, rutaImagen, color, canciones } = albumSeleccionado;
 
     // Cabecera
     const divCabecera = document.createElement('div');
@@ -290,7 +311,7 @@ function mostrarAlbum(idAlbum) {
 
     const divInfo = document.createElement('div');
     divInfo.classList.add('flex', 'flex-wrap', 'content-end', 'w-full', 'md:w-fit', 'md:gap-4', 'lg:gap-6');
-    
+
     const pNombre = document.createElement('p');
     pNombre.classList.add('w-full', 'mb-3', 'text-4xl', 'font-bold', 'md:text-6xl', 'lg:text-7xl', 'xl:text-8xl');
     pNombre.textContent = nombreAlbum;
@@ -364,7 +385,12 @@ function mostrarAlbum(idAlbum) {
         const { id, nombre, ruta, duracion } = cancion;
 
         const divCancion = document.createElement('div');
-        divCancion.classList.add('w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer', 'md:hover:bg-neutral-600');
+        divCancion.classList.add('cancion', 'w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer', 'md:hover:bg-green-600');
+        divCancion.setAttribute('id', id);
+
+        divCancion.onclick = () => {
+            reproducir(idAlbum, id, ruta, duracion);
+        }
 
         const cancionIzq = document.createElement('div');
         cancionIzq.classList.add('flex', 'gap-8');
@@ -379,7 +405,7 @@ function mostrarAlbum(idAlbum) {
         cancionIzq.appendChild(pNombre);
 
         const cancionDer = document.createElement('div');
-        
+
         const pTiempo = document.createElement('p');
         pTiempo.textContent = duracion;
 
@@ -392,6 +418,41 @@ function mostrarAlbum(idAlbum) {
     });
 
     contenidoPrincipal.appendChild(divCanciones);
+}
+
+function reproducir(idAlbum, idCancion, ruta, duracion) {
+    const canciones = document.querySelectorAll('.cancion');
+    canciones.forEach(cancion => {
+        cancion.classList.remove('bg-green-600');
+    });
+
+    const divCancion = document.getElementById(idCancion);
+    divCancion.classList.add('bg-green-600');
+
+    const albumCancion = albumes.find(album => album.id === idAlbum);
+
+    audioCancion.src = `../audios/${albumCancion.nombreAlbum}/${ruta}`;
+
+    if (audioCancion.paused) {
+        audioCancion.play();
+
+        audioCancion.addEventListener('timeupdate', () => {
+            //tiempoActual.textContent = ;
+            //tiempoRestante.textContent = ;
+            barraCancion.value = audioCancion.currentTime;
+            barraCancion.max = audioCancion.duration;
+
+        });
+        btnPlay.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M20 32q.65 0 1.075-.425.425-.425.425-1.075V17.45q0-.6-.425-1.025Q20.65 16 20 16q-.65 0-1.075.425-.425.425-.425 1.075v13.05q0 .6.425 1.025Q19.35 32 20 32Zm8 0q.65 0 1.075-.425.425-.425.425-1.075V17.45q0-.6-.425-1.025Q28.65 16 28 16q-.65 0-1.075.425-.425.425-.425 1.075v13.05q0 .6.425 1.025Q27.35 32 28 32Zm-4 12q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24t1.575-7.75q1.575-3.65 4.3-6.375 2.725-2.725 6.375-4.3Q19.9 4 24 4t7.75 1.575q3.65 1.575 6.375 4.3 2.725 2.725 4.3 6.375Q44 19.9 44 24t-1.575 7.75q-1.575 3.65-4.3 6.375-2.725 2.725-6.375 4.3Q28.1 44 24 44Z"/></svg>
+        `;
+
+    } else {
+        audioCancion.pause();
+        btnPlay.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M19.15 18.25v11.5q0 .9.775 1.35.775.45 1.525-.05l9.05-5.8q.7-.45.7-1.25t-.7-1.25l-9.05-5.8q-.75-.5-1.525-.05-.775.45-.775 1.35ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24t1.575-7.75q1.575-3.65 4.3-6.375 2.725-2.725 6.375-4.3Q19.9 4 24 4t7.75 1.575q3.65 1.575 6.375 4.3 2.725 2.725 4.3 6.375Q44 19.9 44 24t-1.575 7.75q-1.575 3.65-4.3 6.375-2.725 2.725-6.375 4.3Q28.1 44 24 44Z"/></svg>
+        `;
+    }
 }
 
 function numeroAleatorio(min, max) {

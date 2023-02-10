@@ -34,7 +34,7 @@
 
                 <!-- Controles del reproductor -->
                 <div class="flex flex-wrap content-center justify-center items-center lg:w-5/12">
-                    <div class="flex items-center justify-center lg:w-full lg:h-12">
+                    <div class="flex items-center justify-center gap-2 lg:w-full lg:h-12">
                         <div class="hidden lg:block">
                             <svg id="shuffle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
                                 <path d="M19.8 21.8 8.65 10.65q-.45-.45-.45-1.075T8.65 8.5q.4-.4 1.05-.4t1.05.4l11.2 11.15Zm10.8 18.7q-.65 0-1.075-.425Q29.1 39.65 29.1 39q0-.65.425-1.075.425-.425 1.075-.425h4.75l-9.2-9.15 2.1-2.15 9.3 9.2v-4.85q0-.65.425-1.075.425-.425 1.075-.425.65 0 1.075.425.425.425.425 1.075V39q0 .65-.425 1.075-.425.425-1.075.425Zm-22-1.1q-.45-.4-.45-1.025 0-.625.45-1.075l26.85-26.85H30.6q-.65 0-1.075-.425Q29.1 9.6 29.1 8.95q0-.65.425-1.075.425-.425 1.075-.425h8.45q.65 0 1.075.425.425.425.425 1.075v8.45q0 .65-.425 1.075-.425.425-1.075.425-.65 0-1.075-.425-.425-.425-.425-1.075v-4.8L10.7 39.45q-.4.4-1.025.4-.625 0-1.075-.45Z" />
@@ -46,8 +46,8 @@
                             </svg>
                         </div>
 
-                        <div>
-                            <svg id="play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                        <div id="btn-play">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
                                 <path d="M18.3 36.4q-.75.5-1.525.05Q16 36 16 35.1V12.6q0-.9.775-1.35.775-.45 1.525.05L36 22.6q.7.45.7 1.25T36 25.1Z" />
                             </svg>
                         </div>
@@ -63,21 +63,22 @@
                         </div>
                     </div>
                     <div class="hidden lg:w-full lg:flex lg:gap-2">
-                        <span>0:00</span>
-                        <input class="range w-full" type="range" name="" id="">
-                        <span>3:55</span>
+                        <audio id="audioCancion"></audio>
+                        <span id="tiempoActual">0:00</span>
+                        <input class="range w-full" type="range" id="barraCancion">
+                        <span id="tiempoRestante">0:00</span>
                     </div>
                 </div>
 
                 <!-- Controles de volumen -->
                 <div class="hidden lg:flex lg:w-3/12 justify-end items-center pr-[38px]">
-                    <div>
-                        <svg id="volume" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                    <div id="btn-volumen">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
                             <path d="M11.5 30q-.65 0-1.075-.425Q10 29.15 10 28.5v-9q0-.65.425-1.075Q10.85 18 11.5 18H18l7.45-7.45q.7-.7 1.625-.325Q28 10.6 28 11.6v24.8q0 1-.925 1.375t-1.625-.325L18 30ZM31 32.4V15.55q2.7.85 4.35 3.2Q37 21.1 37 24q0 2.95-1.65 5.25T31 32.4Z" />
                         </svg>
                     </div>
                     <div class="hidden lg:flex">
-                        <input class="range" type="range" name="" id="">
+                        <input class="range" type="range" id="barraVolumen">
                     </div>
                 </div>
             </div>
