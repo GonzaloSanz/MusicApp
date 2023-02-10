@@ -8,6 +8,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="shortcut icon" href="./img/iconos/SongLogo.svg" type="image/x-icon">
+    <!--
+        - Volumen
+        - Tiempo
+        - Canción sencilla
+        - Dejar marcada la canción que se está reproduciendo
+        - Botones del reproductor
+        - Imagen y nombres de la canción
+        - Ocultar reproductor
+        - Vista de reproductor móvil
+        - Degradado 
+    -->
 </head>
 <body class="overflow-y-hidden">
     <!-- Contenedor de la aplicación -->
@@ -23,12 +34,11 @@
             <div class="w-11/12 sm:w-5/6 md:w-4/6 px-2 h-full bg-neutral-600/95 lg:bg-neutral-600 text-white rounded-lg flex justify-between overflow-hidden sm:px-0 sm:pr-5 md:pr-6 lg:pr-0 lg:w-full lg:rounded-none">
                 <div class="flex gap-3 items-center w-6/12 sm:w-8/12 h-full lg:gap-5 lg:w-3/12 lg:w-full">
                     <div class="h-full min-w-fit">
-                        <img class="h-full hidden sm:block" src="img/albumes/myheadisananimal.jpg">
+                        <img id="coverReproductor" class="h-full hidden sm:block">
                     </div>
                     <div class="w-full min-w-0">
-                        <p class="text-lg font-semibold whitespace-nowrap text-ellipsis overflow-hidden mb-2">My Head is
-                            an Animal</p>
-                        <p class="text-sm text-zinc-300">Of Monsters and Men</p>
+                        <p id="tituloReproductor" class="text-lg font-semibold whitespace-nowrap text-ellipsis overflow-hidden mb-2"></p>
+                        <p id="artistaReproductor" class="text-sm text-zinc-300"></p>
                     </div>
                 </div>
 
