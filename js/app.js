@@ -13,7 +13,7 @@ let sencillas = [];
 
 const contenidoPrincipal = document.querySelector('#contenido-principal');
 
-const homeMenu = document.querySelector('#menu-home');
+const inicioMenu = document.querySelector('#menu-inicio');
 const albumesMenu = document.querySelector('#menu-albumes');
 const cancionesMenu = document.querySelector('#menu-sencillas');
 
@@ -27,14 +27,13 @@ const cancionesMenu = document.querySelector('#menu-sencillas');
 
 window.addEventListener('load', () => {
     // Recoger todos los álbumes y canciones del json
-    obtenerAlbumes();
-    obtenerSencillas();
+    obtenerDatos();
 
     // Acciones del menú
-    homeMenu.addEventListener('click', () => {
+    inicioMenu.addEventListener('click', () => {
         limpiarHTML(contenidoPrincipal);
 
-        cargarHome();
+        cargarInicio();
     });
 
     albumesMenu.addEventListener('click', () => {
@@ -63,35 +62,26 @@ window.addEventListener('load', () => {
  ***********************************************************
 */
 
-async function obtenerAlbumes() {
+function obtenerDatos() {
     fetch('db.json')
         .then(respuesta => respuesta.json())
         .then(resultado => {
             resultado.albumes.forEach(album => {
                 albumes.push(album);
             });
-        })
-        .catch(error => {
-            console.log('Ocurrió un error, ' + error);
-        });
-}
 
-async function obtenerSencillas() {
-    fetch('db.json')
-        .then(respuesta => respuesta.json())
-        .then(resultado => {
             resultado.sencillas.forEach(sencilla => {
                 sencillas.push(sencilla);
             });
 
-            cargarHome();
+            cargarInicio();
         })
         .catch(error => {
             console.log('Ocurrió un error, ' + error);
         });
 }
 
-function cargarHome() {
+function cargarInicio() {
     contenidoPrincipal.classList.add('p-6');
     crearLogo();
 
@@ -265,13 +255,25 @@ function mostrarAlbum(idAlbum) {
 
     const {id, nombreAlbum, artista, fecha_lanzamiento, cantidad_canciones, duracion, rutaImagen, color, canciones} = albumSeleccionado;
 
+    // Cabecera
     const divCabecera = document.createElement('div');
     divCabecera.classList.add('bg-blue-900', 'p-5', 'sm:p-10');
-    divCabecera.innerHTML = `
+
+    const divVolver = document.createElement('div');
+    divVolver.classList.add('w-6', 'md:hover:cursor-pointer');
+    divVolver.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
             <path d="m22.35 38.95-13.9-13.9q-.25-.25-.35-.5Q8 24.3 8 24q0-.3.1-.55.1-.25.35-.5L22.4 9q.4-.4 1-.4t1.05.45q.45.45.45 1.05 0 .6-.45 1.05L13.1 22.5h24.8q.65 0 1.075.425.425.425.425 1.075 0 .65-.425 1.075-.425.425-1.075.425H13.1l11.4 11.4q.4.4.4 1t-.45 1.05q-.45.45-1.05.45-.6 0-1.05-.45Z" />
         </svg>
     `;
+
+    divVolver.onclick = () => {
+        limpiarHTML(contenidoPrincipal);
+
+        contenidoPrincipal.classList.add('p-6');
+        crearLogo();
+        cargarAlbumes('Álbumes disponibles', albumes);
+    }
 
     const divContenidoCabecera = document.createElement('div');
     divContenidoCabecera.classList.add('flex', 'flex-wrap', 'justify-between', 'gap-8', 'mt-8', 'md:flex-nowrap', 'md:justify-start');
@@ -319,9 +321,77 @@ function mostrarAlbum(idAlbum) {
     divContenidoCabecera.appendChild(divImagen);
     divContenidoCabecera.appendChild(divInfo);
 
+    divCabecera.appendChild(divVolver);
     divCabecera.appendChild(divContenidoCabecera);
 
     contenidoPrincipal.appendChild(divCabecera);
+
+    // Canciones
+    const divCanciones = document.createElement('div');
+    divCanciones.classList.add('flex', 'flex-wrap', 'p-5', 'sm:p-10');
+
+    const cancionesHead = document.createElement('div');
+    cancionesHead.classList.add('w-full', 'flex', 'justify-between', 'items-center', 'border-b', 'border-neutral-600', 'px-5', 'py-2.5', 'mb-4');
+
+    const cancionesHeadIzq = document.createElement('div');
+    cancionesHeadIzq.classList.add('flex', 'gap-8');
+
+    const pNumero = document.createElement('p');
+    pNumero.textContent = '#';
+
+    const pTitulo = document.createElement('p');
+    pTitulo.classList.add('uppercase');
+    pTitulo.textContent = 'Título';
+
+    const cancionesHeadDer = document.createElement('div');
+    cancionesHeadDer.innerHTML = `
+        <svg id="timer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+            <path d="M19.5 5q-.65 0-1.075-.425Q18 4.15 18 3.5q0-.65.425-1.075Q18.85 2 19.5 2h9q.65 0 1.075.425Q30 2.85 30 3.5q0 .65-.425 1.075Q29.15 5 28.5 5ZM24 27.35q.65 0 1.075-.425.425-.425.425-1.075v-8.5q0-.65-.425-1.075-.425-.425-1.075-.425-.65 0-1.075.425-.425.425-.425 1.075v8.5q0 .65.425 1.075.425.425 1.075.425Zm0 16.6q-3.7 0-6.975-1.425Q13.75 41.1 11.3 38.65q-2.45-2.45-3.875-5.725Q6 29.65 6 25.95q0-3.7 1.425-6.975Q8.85 15.7 11.3 13.25q2.45-2.45 5.725-3.875Q20.3 7.95 24 7.95q3.35 0 6.3 1.125 2.95 1.125 5.25 3.125l1.55-1.55q.4-.4 1-.4t1.05.45q.45.45.45 1.05 0 .6-.45 1.05l-1.5 1.5q1.8 2 3.075 4.85Q42 22 42 25.95q0 3.7-1.425 6.975Q39.15 36.2 36.7 38.65q-2.45 2.45-5.725 3.875Q27.7 43.95 24 43.95Zm0-3q6.25 0 10.625-4.375T39 25.95q0-6.25-4.375-10.625T24 10.95q-6.25 0-10.625 4.375T9 25.95q0 6.25 4.375 10.625T24 40.95ZM24 26Z" />
+        </svg>
+    
+    `;
+
+    cancionesHeadIzq.appendChild(pNumero);
+    cancionesHeadIzq.appendChild(pTitulo);
+
+    cancionesHead.appendChild(cancionesHeadIzq);
+    cancionesHead.appendChild(cancionesHeadDer);
+
+    divCanciones.appendChild(cancionesHead);
+
+    canciones.forEach(cancion => {
+
+        const { id, nombre, ruta, duracion } = cancion;
+
+        const divCancion = document.createElement('div');
+        divCancion.classList.add('w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer', 'md:hover:bg-neutral-600');
+
+        const cancionIzq = document.createElement('div');
+        cancionIzq.classList.add('flex', 'gap-8');
+
+        const pNumero = document.createElement('p');
+        pNumero.textContent = id;
+
+        const pNombre = document.createElement('p');
+        pNombre.textContent = nombre;
+
+        cancionIzq.appendChild(pNumero);
+        cancionIzq.appendChild(pNombre);
+
+        const cancionDer = document.createElement('div');
+        
+        const pTiempo = document.createElement('p');
+        pTiempo.textContent = duracion;
+
+        cancionDer.appendChild(pTiempo);
+
+        divCancion.appendChild(cancionIzq);
+        divCancion.appendChild(cancionDer);
+
+        divCanciones.appendChild(divCancion);
+    });
+
+    contenidoPrincipal.appendChild(divCanciones);
 }
 
 function numeroAleatorio(min, max) {
