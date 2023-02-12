@@ -17,15 +17,10 @@ body {
 }
 
 #shuffle {
-  fill: url(#myGradient);
   width: 1.875em;
 }
 
 #repeat {
-  width: 1.875em;
-}
-
-#volume {
   width: 1.875em;
 }
 
