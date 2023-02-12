@@ -9,15 +9,22 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="shortcut icon" href="./img/iconos/SongLogo.svg" type="image/x-icon">
     <!--
-        - Volumen
-        - Tiempo
-        - Canción sencilla
-        - Dejar marcada la canción que se está reproduciendo
-        - Botones del reproductor
-        - Imagen y nombres de la canción
-        - Ocultar reproductor
-        - Vista de reproductor móvil
-        - Degradado 
+        Cosas por hacer: 
+        
+            - Tiempo
+            - Canción sencilla
+            - Dejar marcada la canción que se está reproduciendo
+            - Imagen y nombres de la canción
+            - Ocultar reproductor
+            - Vista de reproductor móvil
+            - Degradado 
+        
+        Terminado:
+
+            - Volumen
+            - Imagen, nombre de la canción y artista en el reproductor.
+            - Botón de play/pause.
+
     -->
 </head>
 <body class="overflow-y-hidden">
@@ -81,14 +88,14 @@
                 </div>
 
                 <!-- Controles de volumen -->
-                <div class="hidden lg:flex lg:w-3/12 justify-end items-center pr-[38px]">
-                    <div id="btn-volumen">
+                <div class="hidden justify-end items-center pr-[38px] lg:flex lg:w-3/12 lg:gap-2">
+                    <button id="icono-volumen">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
                             <path d="M11.5 30q-.65 0-1.075-.425Q10 29.15 10 28.5v-9q0-.65.425-1.075Q10.85 18 11.5 18H18l7.45-7.45q.7-.7 1.625-.325Q28 10.6 28 11.6v24.8q0 1-.925 1.375t-1.625-.325L18 30ZM31 32.4V15.55q2.7.85 4.35 3.2Q37 21.1 37 24q0 2.95-1.65 5.25T31 32.4Z" />
                         </svg>
-                    </div>
+                    </button>
                     <div class="hidden lg:flex">
-                        <input class="range" type="range" id="barraVolumen">
+                        <input id="barraVolumen" class="range" type="range" step="0.1" min="0" max="1">
                     </div>
                 </div>
             </div>

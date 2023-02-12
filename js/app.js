@@ -18,22 +18,28 @@ const inicioMenu = document.querySelector('#menu-inicio');
 const albumesMenu = document.querySelector('#menu-albumes');
 const cancionesMenu = document.querySelector('#menu-sencillas');
 
+// Cover y nombres del reproductor
+const coverReproductor = document.querySelector('#coverReproductor');
+const tituloReproductor = document.querySelector('#tituloReproductor');
+const artistaReproductor = document.querySelector('#artistaReproductor');
+
 // Canción
 const audioCancion = document.querySelector('#audioCancion');
-audioCancion.volume = 0.5;
 const tiempoActual = document.querySelector('#tiempoActual');
 const tiempoRestante = document.querySelector('#tiempoRestante');
 
-//Reproductor
-
-
 // Controles canción
 const barraCancion = document.querySelector('#barraCancion');
+const btnAleatorio = document.querySelector('#btn-aleatorio');
+const btnAnterior = document.querySelector('#btn-anterior');
 const btnPlay = document.querySelector('#btn-play');
+const btnSiguiente = document.querySelector('#btn-siguiente');
+const btnRepetir = document.querySelector('#btn-repetir');
 
 // Controles Volumen
+audioCancion.volume = 0.5;
 const barraVolumen = document.querySelector('#barraVolumen');
-const btnVolumen = document.querySelector('#btn-volumen');
+const iconoVolumen = document.querySelector('#icono-volumen');
 
 /*
  ***********************************************************
@@ -70,12 +76,53 @@ window.addEventListener('load', () => {
         cargarCanciones('Echa un vistazo a nuestras canciones', sencillas);
     });
 
-    // Controles canción
+    // Controles de la canción
+    btnPlay.addEventListener('click', alternarPlayPlause);
+
     barraCancion.addEventListener('change', () => {
         audioCancion.currentTime = barraCancion.value;
     });
 
+    audioCancion.addEventListener("ended", siguienteCancion);
 
+    // Controles de volumen
+    iconoVolumen.addEventListener('click', () => {
+        if(audioCancion.volume > 0) {
+            audioCancion.volume = 0;
+            barraVolumen.value = 0;
+            iconoVolumen.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="m39.55 44.1-5.5-5.5q-1 .7-2.075 1.275-1.075.575-2.225.975-.8.25-1.45-.25-.65-.5-.65-1.35 0-.4.225-.725.225-.325.625-.425.9-.3 1.775-.7.875-.4 1.625-.95l-8.25-8.3v8.25q0 1-.925 1.375T21.1 37.45L13.65 30h-6.5q-.65 0-1.075-.425-.425-.425-.425-1.075v-9q0-.65.425-1.075Q6.5 18 7.15 18h6.3L3.5 8.05q-.45-.45-.425-1.075Q3.1 6.35 3.55 5.9 4 5.45 4.6 5.45q.6 0 1.05.45l36.1 36.05q.45.45.45 1.075t-.45 1.075q-.45.45-1.1.45-.65 0-1.1-.45Zm-9.8-37.05q5.35 1.9 8.625 6.525Q41.65 18.2 41.65 23.95q0 2.55-.7 5t-2.1 4.65l-2.15-2.15q1-1.7 1.475-3.6.475-1.9.475-3.9 0-4.95-2.775-8.9T28.5 9.75q-.4-.1-.625-.425Q27.65 9 27.65 8.6q0-.85.675-1.325t1.425-.225Zm2.4 19.85-4.5-4.5v-6.5Q30 17 31.325 19.2q1.325 2.2 1.325 4.8 0 .75-.125 1.475-.125.725-.375 1.425Zm-8.5-8.5-5.2-5.2 2.65-2.65q.7-.7 1.625-.325.925.375.925 1.375Z"/></svg>  
+            `;
+        } else if (audioCancion.volume === 0) {
+            audioCancion.volume = 0.2;
+            barraVolumen.value = 0.2;
+            iconoVolumen.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M15.5 30q-.65 0-1.075-.425Q14 29.15 14 28.5v-9q0-.65.425-1.075Q14.85 18 15.5 18H22l7.45-7.45q.7-.7 1.625-.325Q32 10.6 32 11.6v24.8q0 1-.925 1.375t-1.625-.325L22 30Z"/></svg>
+            `;
+        }
+    });
+
+    barraVolumen.addEventListener('change', () => {
+        audioCancion.volume = barraVolumen.value;
+
+        if (audioCancion.volume === 0) {
+            iconoVolumen.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="m39.55 44.1-5.5-5.5q-1 .7-2.075 1.275-1.075.575-2.225.975-.8.25-1.45-.25-.65-.5-.65-1.35 0-.4.225-.725.225-.325.625-.425.9-.3 1.775-.7.875-.4 1.625-.95l-8.25-8.3v8.25q0 1-.925 1.375T21.1 37.45L13.65 30h-6.5q-.65 0-1.075-.425-.425-.425-.425-1.075v-9q0-.65.425-1.075Q6.5 18 7.15 18h6.3L3.5 8.05q-.45-.45-.425-1.075Q3.1 6.35 3.55 5.9 4 5.45 4.6 5.45q.6 0 1.05.45l36.1 36.05q.45.45.45 1.075t-.45 1.075q-.45.45-1.1.45-.65 0-1.1-.45Zm-9.8-37.05q5.35 1.9 8.625 6.525Q41.65 18.2 41.65 23.95q0 2.55-.7 5t-2.1 4.65l-2.15-2.15q1-1.7 1.475-3.6.475-1.9.475-3.9 0-4.95-2.775-8.9T28.5 9.75q-.4-.1-.625-.425Q27.65 9 27.65 8.6q0-.85.675-1.325t1.425-.225Zm2.4 19.85-4.5-4.5v-6.5Q30 17 31.325 19.2q1.325 2.2 1.325 4.8 0 .75-.125 1.475-.125.725-.375 1.425Zm-8.5-8.5-5.2-5.2 2.65-2.65q.7-.7 1.625-.325.925.375.925 1.375Z"/></svg>  
+            `;
+        } else if(audioCancion.volume > 0 && audioCancion.volume <= 0.33) {
+            iconoVolumen.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M15.5 30q-.65 0-1.075-.425Q14 29.15 14 28.5v-9q0-.65.425-1.075Q14.85 18 15.5 18H22l7.45-7.45q.7-.7 1.625-.325Q32 10.6 32 11.6v24.8q0 1-.925 1.375t-1.625-.325L22 30Z"/></svg>
+            `;
+        } else if(audioCancion.volume > 0.33 && audioCancion.volume <= 0.66) {
+            iconoVolumen.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M11.5 30q-.65 0-1.075-.425Q10 29.15 10 28.5v-9q0-.65.425-1.075Q10.85 18 11.5 18H18l7.45-7.45q.7-.7 1.625-.325Q28 10.6 28 11.6v24.8q0 1-.925 1.375t-1.625-.325L18 30ZM31 32.4V15.55q2.7.85 4.35 3.2Q37 21.1 37 24q0 2.95-1.65 5.25T31 32.4Z"/></svg>
+            `;
+        } else {
+            iconoVolumen.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M30.1 40.85q-.8.25-1.45-.25-.65-.5-.65-1.35 0-.4.225-.725.225-.325.625-.425 4.55-1.6 7.35-5.45t2.8-8.7q0-4.85-2.8-8.725T28.85 9.8q-.4-.1-.625-.45Q28 9 28 8.6q0-.85.675-1.325T30.1 7.05q5.35 1.9 8.625 6.525Q42 18.2 42 23.95t-3.275 10.375Q35.45 38.95 30.1 40.85ZM7.5 30q-.65 0-1.075-.425Q6 29.15 6 28.5v-9q0-.65.425-1.075Q6.85 18 7.5 18H14l7.45-7.45q.7-.7 1.625-.325Q24 10.6 24 11.6v24.8q0 1-.925 1.375t-1.625-.325L14 30ZM27 32.4V15.55q2.7.85 4.35 3.2Q33 21.1 33 24q0 2.95-1.65 5.25T27 32.4Z"/></svg>
+            `;
+        }
+    });
 });
 
 /*
@@ -385,14 +432,14 @@ function mostrarAlbum(idAlbum) {
 
     canciones.forEach(cancion => {
 
-        const { id, nombre, ruta, duracion } = cancion;
+        const { id, nombre, duracion } = cancion;
 
         const divCancion = document.createElement('div');
         divCancion.classList.add('cancion', 'w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer', 'md:hover:bg-green-600');
         divCancion.setAttribute('id', id);
 
         divCancion.onclick = () => {
-            reproducir(idAlbum, id, ruta, duracion);
+            reproducir(idAlbum, id);
         }
 
         const cancionIzq = document.createElement('div');
@@ -423,7 +470,7 @@ function mostrarAlbum(idAlbum) {
     contenidoPrincipal.appendChild(divCanciones);
 }
 
-function reproducir(idAlbum, idCancion, ruta, duracion) {
+function reproducir(idAlbum, idCancion) {
     const canciones = document.querySelectorAll('.cancion');
     canciones.forEach(cancion => {
         cancion.classList.remove('bg-green-600');
@@ -434,15 +481,30 @@ function reproducir(idAlbum, idCancion, ruta, duracion) {
 
     const albumCancion = albumes.find(album => album.id === idAlbum);
 
-    audioCancion.src = `../audios/${albumCancion.nombreAlbum}/${ruta}`;
+    const { nombreAlbum, artista, rutaImagen, canciones:cancionesAlbum} = albumCancion;
 
+    const laCancion = cancionesAlbum.find(cancion => cancion.id === idCancion);
+
+    const { nombre, ruta} = laCancion;
+    console.log(nombre);
+
+    coverReproductor.src = `../img/albumes/${rutaImagen}`;
+    tituloReproductor.textContent = nombre;
+    artistaReproductor.textContent = artista;
+
+    audioCancion.src = `../audios/${nombreAlbum}/${ruta}`;
+
+    alternarPlayPlause();
+}
+
+function alternarPlayPlause() {
     if (audioCancion.paused) {
         audioCancion.play();
 
         audioCancion.addEventListener('timeupdate', () => {
             tiempoActual.textContent = audioCancion.currentTime;
             //tiempoRestante.textContent = ;
-            
+
             barraCancion.value = audioCancion.currentTime;
             barraCancion.max = audioCancion.duration;
 
@@ -457,6 +519,10 @@ function reproducir(idAlbum, idCancion, ruta, duracion) {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M19.15 18.25v11.5q0 .9.775 1.35.775.45 1.525-.05l9.05-5.8q.7-.45.7-1.25t-.7-1.25l-9.05-5.8q-.75-.5-1.525-.05-.775.45-.775 1.35ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24t1.575-7.75q1.575-3.65 4.3-6.375 2.725-2.725 6.375-4.3Q19.9 4 24 4t7.75 1.575q3.65 1.575 6.375 4.3 2.725 2.725 4.3 6.375Q44 19.9 44 24t-1.575 7.75q-1.575 3.65-4.3 6.375-2.725 2.725-6.375 4.3Q28.1 44 24 44Z"/></svg>
         `;
     }
+}
+
+function siguienteCancion() {
+
 }
 
 function numeroAleatorio(min, max) {
