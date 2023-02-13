@@ -323,11 +323,12 @@ function mostrarAlbum(idAlbum) {
     contenidoPrincipal.classList.remove('p-6');
     limpiarHTML(contenidoPrincipal);
 
-    const { nombreAlbum, artista, fecha_lanzamiento, cantidad_canciones, duracion, rutaImagen, color, canciones } = albumSeleccionado;
+    const { nombreAlbum, artista, fecha_lanzamiento, cantidad_canciones, duracion, rutaImagen, color, sombra, canciones } = albumSeleccionado;
 
     // Cabecera
     const divCabecera = document.createElement('div');
-    divCabecera.classList.add('bg-blue-900', 'p-5', 'sm:p-10');
+    divCabecera.classList.add('p-5', 'sm:p-10');
+    divCabecera.style.background = `linear-gradient(${color}, ${sombra})`;
 
     const divVolver = document.createElement('div');
     divVolver.classList.add('w-6', 'md:hover:cursor-pointer');
@@ -370,6 +371,7 @@ function mostrarAlbum(idAlbum) {
 
     const spanArtista = document.createElement('span');
     spanArtista.textContent = artista;
+    spanArtista.classList.add('font-semibold');
 
     const spanCantidadCanciones = document.createElement('span');
     spanCantidadCanciones.textContent = `${cantidad_canciones} canciones`;

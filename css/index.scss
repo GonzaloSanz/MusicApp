@@ -49,13 +49,10 @@ svg {
     height: 87vh;
 }
 
-.cover-container {
-    background: linear-gradient(#00d0fd, #0a647c);
-}
-
-.list-container {
-    background: linear-gradient(to bottom, #064759, #121212) no-repeat top;
-    background-size: 100% 18%;
+.h-menu {
+    @media (min-width: 1024px) {
+        height: 30vh;
+    }
 }
 
 .h-cover-img {

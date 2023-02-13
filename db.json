@@ -8,7 +8,8 @@
             "cantidad_canciones": 12,
             "duracion": "59:38",
             "rutaImagen": "MyHeadIsAnAnimal.jpg",
-            "color": "gray",
+            "color": "#525a42",
+            "sombra": "#292d21",
             "canciones": [
                 {
                     "id": 1,
@@ -92,7 +93,8 @@
             "cantidad_canciones": 10,
             "duracion": "32:46",
             "rutaImagen": "SickBoy.jpg",
-            "color": "red",
+            "color": "#a95353",
+            "sombra": "#552929",
             "canciones": [
                 {
                     "id": 1,
@@ -165,6 +167,7 @@
             "duracion": "44:02",
             "rutaImagen": "VICEVERSA.jpg",
             "color": "#00d0fd",
+            "sombra": "#0a647c",
             "canciones": [
                 {
                     "id": 1,
@@ -254,7 +257,8 @@
             "cantidad_canciones": 11,
             "duracion": "38:53",
             "rutaImagen": "ICYMI.jpg",
-            "color": "#e6d501",
+            "color": "#fdfa00",
+            "sombra": "#7c750a",
             "canciones": [
                 {
                     "id": 1,
@@ -332,7 +336,8 @@
             "cantidad_canciones": 7,
             "duracion": "24:50",
             "rutaImagen": "Milagro.jpg",
-            "color": "#3381b7",
+            "color": "#3582b9",
+            "sombra": "#1a415d",
             "canciones": [
                 {
                     "id": 1,
@@ -387,7 +392,9 @@
             "fecha_lanzamiento": "23 de Abril de 2019",
             "rutaImagen": "Goddamn.jpg",
             "ruta": "Goddamn.mp3",
-            "duracion": "2:36"
+            "duracion": "2:36",
+            "color": "#7a4406",
+            "sombra": "#3d2102"
         },
         {
             "id": 2,
@@ -396,7 +403,9 @@
             "fecha_lanzamiento": "30 de Julio de 2021",
             "rutaImagen": "Chatarra.jpg",
             "ruta": "Chatarra.mp3",
-            "duracion": "3:28"
+            "duracion": "3:28",
+            "color": "#a94c53",
+            "sombra": "#542529"
         },
         {
             "id": 3,
@@ -405,7 +414,9 @@
             "fecha_lanzamiento": "20 de Enero de 2022",
             "rutaImagen": "Hookah.jpg",
             "ruta": "Hookah.mp3",
-            "duracion": "2:16"
+            "duracion": "2:16",
+            "color": "#ffffff",
+            "sombra": "#164d74"
         },
         {
             "id": 4,
@@ -414,7 +425,9 @@
             "fecha_lanzamiento": "29 de Octubre de 2021",
             "rutaImagen": "TofuDelivery.jpg",
             "ruta": "TofuDelivery.mp3",
-            "duracion": "3:04"
+            "duracion": "3:04",
+            "color": "#34b1e8",
+            "sombra": "#1a5974"
         },
         {
             "id": 5,
@@ -423,7 +436,9 @@
             "fecha_lanzamiento": "24 de Septiembre de 2015",
             "rutaImagen": "MyHouse.jpg",
             "ruta": "MyHouse.mp3",
-            "duracion": "3:16"
+            "duracion": "3:16",
+            "color": "#0edfdf",
+            "sombra": "#057070"
         },
         {
             "id": 6,
@@ -432,7 +447,9 @@
             "fecha_lanzamiento": "18 de Marzo de 2017",
             "rutaImagen": "Matafaka.jpg",
             "ruta": "Matafaka.mp3",
-            "duracion": "4:07"
+            "duracion": "4:07",
+            "color": "#d87214",
+            "sombra": "#6c380a"
         },
         {
             "id": 7,
@@ -441,7 +458,9 @@
             "fecha_lanzamiento": "14 de Septiembre de 2021",
             "rutaImagen": "Bumaye.jpg",
             "ruta": "Bumaye.mp3",
-            "duracion": "3:37"
+            "duracion": "3:37",
+            "color": "#3d3d3d",
+            "sombra": "#1d1d1d"
         },
         {
             "id": 8,
@@ -450,7 +469,9 @@
             "fecha_lanzamiento": "20 de Diciembre de 2019",
             "rutaImagen": "PoquitoAPoco.jpg",
             "ruta": "PoquitoAPoco.mp3",
-            "duracion": "3:24"
+            "duracion": "3:24",
+            "color": "#899191",
+            "sombra": "#454949"
         },
         {
             "id": 9,
@@ -459,7 +480,9 @@
             "fecha_lanzamiento": "21 de Enero de 2022",
             "rutaImagen": "Warm.jpg",
             "ruta": "Warm.mp3",
-            "duracion": "3:01"
+            "duracion": "3:01",
+            "color": "#622b0c",
+            "sombra": "#311607"
         },
         {
             "id": 10,
@@ -468,7 +491,9 @@
             "fecha_lanzamiento": "13 de Diciembre de 2019",
             "rutaImagen": "UnPobreConDinero.jpg",
             "ruta": "UnPobreConDinero.mp3",
-            "duracion": "3:24"
+            "duracion": "3:24",
+            "color": "#3b2c33",
+            "sombra": "#1e161a"
         },
         {
             "id": 11,
@@ -477,7 +502,9 @@
             "fecha_lanzamiento": "3 de Marzo de 2017",
             "rutaImagen": "NancyMulligan.jpg",
             "ruta": "NancyMulligan.mp3",
-            "duracion": "2:59"
+            "duracion": "2:59",
+            "color": "#34b8d7",
+            "sombra": "#1a5c6c"
         },
         {
             "id": 12,
@@ -486,7 +513,9 @@
             "fecha_lanzamiento": "10 de Septiembre de 2021",
             "rutaImagen": "SiTuKiere.jpg",
             "ruta": "SiTuKiere.mp3",
-            "duracion": "3:01"
+            "duracion": "3:01",
+            "color": "#e72e3d",
+            "sombra": "#74151d"
         },
         {
             "id": 13,
@@ -495,7 +524,9 @@
             "fecha_lanzamiento": "15 de Enero de 2019",
             "rutaImagen": "FlossInTheBank.jpg",
             "ruta": "FlossInTheBank.mp3",
-            "duracion": "2:31"
+            "duracion": "2:31",
+            "color": "#a12c15",
+            "sombra": "#51160a"
         }
     ]
 }
