@@ -67,4 +67,89 @@ svg {
 
 .range {
   accent-color: #fff;
+}
+
+.wave {
+  width: 100%;
+  height: 1em;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.wave1 {
+  width: 2px;
+  height: 1em;
+  background-color: white;
+  -webkit-animation: wave 1s linear infinite;
+          animation: wave 1s linear infinite;
+}
+
+.wave2 {
+  width: 2px;
+  height: 1em;
+  background-color: white;
+  -webkit-animation: wave 1s linear infinite;
+          animation: wave 1s linear infinite;
+  -webkit-animation-delay: -0.2s;
+          animation-delay: -0.2s;
+}
+
+.wave3 {
+  width: 2px;
+  height: 1em;
+  background-color: white;
+  -webkit-animation: wave 1s linear infinite;
+          animation: wave 1s linear infinite;
+  -webkit-animation-delay: -0.4s;
+          animation-delay: -0.4s;
+}
+
+.wave4 {
+  width: 2px;
+  height: 1em;
+  background-color: white;
+  -webkit-animation: wave 1s linear infinite;
+          animation: wave 1s linear infinite;
+  -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+}
+
+@-webkit-keyframes wave {
+  0% {
+    height: 0.5em;
+  }
+  50% {
+    height: 1em;
+  }
+  100% {
+    height: 0.5em;
+  }
+}
+
+@keyframes wave {
+  0% {
+    height: 0.5em;
+  }
+  50% {
+    height: 1em;
+  }
+  100% {
+    height: 0.5em;
+  }
+}
+.numero {
+  display: none;
+}
+
+.cancionSeleccionada {
+  background-color: #444;
+}
+
+.cancionHover:hover {
+  background-color: #444;
+}
+
+.cancionSonando {
+  background-color: #888;
 }/*# sourceMappingURL=index.css.map */

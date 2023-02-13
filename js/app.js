@@ -83,8 +83,9 @@ window.addEventListener('load', () => {
     // Controles de la canción
     btnPlay.addEventListener('click', alternarPlayPlause);
 
-    barraCancion.addEventListener('change', () => {
+    barraCancion.addEventListener('input', () => {
         audioCancion.currentTime = barraCancion.value;
+        actualizarTiempoCancion(audioCancion, barraCancion, tiempoActual, tiempoRestante);
     });
 
     audioCancion.addEventListener("ended", siguienteCancion);
@@ -116,7 +117,7 @@ window.addEventListener('load', () => {
         }
     });
 
-    barraVolumen.addEventListener('change', () => {
+    barraVolumen.addEventListener('input', () => {
         audioCancion.volume = barraVolumen.value;
         actualizarIconoVolumen();
     });
@@ -436,24 +437,51 @@ function mostrarAlbum(idAlbum) {
         const { id, nombre, duracion } = cancion;
 
         const divCancion = document.createElement('div');
-        divCancion.classList.add('cancion', 'w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer', 'md:hover:bg-green-600');
+        divCancion.classList.add('cancion', 'w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer', 'cancionHover');
         divCancion.setAttribute('id', id);
 
-        divCancion.onclick = () => {
-            reproducir(idAlbum, id);
+        divCancion.onpointerup = () => {      
+            if (window.matchMedia("(max-width: 991px)").matches) {
+                reproducir(idAlbum, id);
+            }
+        }
+
+        divCancion.ondblclick = () => {
+            if (window.matchMedia("(min-width: 992px)").matches) {
+                reproducir(idAlbum, id);
+            }
+        }
+
+        if (window.matchMedia("(min-width: 992px)").matches) {
+            divCancion.onclick = () => {
+                if (document.querySelector(".cancionSeleccionada")) {
+                    document.querySelector(".cancionSeleccionada").classList.remove("cancionSeleccionada");
+                }
+                divCancion.classList.add("cancionSeleccionada");
+            }
         }
 
         const cancionIzq = document.createElement('div');
-        cancionIzq.classList.add('flex', 'gap-8');
+        cancionIzq.classList.add('flex', 'gap-8', 'items-center', 'overflow-hidden');
 
         const pNumero = document.createElement('p');
         pNumero.textContent = id;
 
+        const divNumero = document.createElement('div');
+        divNumero.id = `numero${id}`;
+        divNumero.classList.add('w-5');
+        divNumero.appendChild(pNumero);
+
         const pNombre = document.createElement('p');
+        pNombre.classList.add('whitespace-nowrap', 'text-ellipsis', 'overflow-hidden');
         pNombre.textContent = nombre;
 
-        cancionIzq.appendChild(pNumero);
-        cancionIzq.appendChild(pNombre);
+        const divNombre = document.createElement('div');
+        divNombre.classList.add('w-full', 'min-w-0');
+        divNombre.appendChild(pNombre);
+
+        cancionIzq.appendChild(divNumero);
+        cancionIzq.appendChild(divNombre);
 
         const cancionDer = document.createElement('div');
 
@@ -478,14 +506,38 @@ function reproducir(idAlbum, idCancion) {
         contenidoReproductor.classList.remove("hidden");
         primeraReproduccion = true;
     }
-    
-    const canciones = document.querySelectorAll('.cancion');
-    canciones.forEach(cancion => {
-        cancion.classList.remove('bg-green-600');
-    });
+
+    if (document.querySelector(".wave")) {
+        document.querySelector(".numero").classList.add("block");
+        document.querySelector(".numero").classList.remove("numero");
+        document.querySelector(".wave").remove();
+    }
 
     const divCancion = document.getElementById(idCancion);
-    divCancion.classList.add('bg-green-600');
+
+    const canciones = document.querySelectorAll('.cancion');
+    canciones.forEach(cancion => {
+        cancion.classList.remove('cancionSonando');
+        cancion.classList.add('cancionHover');
+    });
+
+    divCancion.classList.remove('cancionHover');
+    divCancion.classList.add('cancionSonando');
+
+    const divNombre = document.getElementById(`numero${idCancion}`);
+    divNombre.style.display = "flex";
+    divNombre.style.alignItems = "center";
+    divNombre.innerHTML = `
+            <div class="wave">
+                <div class="wave1"></div>
+                <div class="wave2"></div>
+                <div class="wave3"></div>
+                <div class="wave4"></div>
+            </div>
+            <div>
+                <p class="numero">${idCancion}</p>
+            </div>
+        `;
 
     const albumCancion = albumes.find(album => album.id === idAlbum);
 
@@ -500,6 +552,7 @@ function reproducir(idAlbum, idCancion) {
     tituloReproductor.textContent = nombre;
     artistaReproductor.textContent = artista;
 
+
     audioCancion.src = `../audios/${nombreAlbum}/${ruta}`;
 
     alternarPlayPlause();
@@ -511,32 +564,7 @@ function alternarPlayPlause() {
 
         audioCancion.addEventListener('timeupdate', () => {
             if (!audioCancion.paused) {
-                let duracionTotal = audioCancion.duration;
-                let duracionRestante = duracionTotal - audioCancion.currentTime;
-                let duracionMinutos = Math.floor(duracionRestante / 60);
-                let duracionSegundos = Math.floor(duracionRestante % 60);
-
-                if (duracionSegundos < 10) {
-                    duracionSegundos = `0${duracionSegundos}`;
-                }
-
-                if (duracionSegundos) {
-                    tiempoRestante.textContent = `-${duracionMinutos}:${duracionSegundos}`;
-                }
-
-                let minutosActuales = Math.floor(audioCancion.currentTime / 60);
-                let segundosActuales = Math.floor(audioCancion.currentTime % 60);
-
-                if (segundosActuales < 10) {
-                    segundosActuales = `0${segundosActuales}`;
-                }
-
-                if (segundosActuales) {
-                    tiempoActual.textContent = `${minutosActuales}:${segundosActuales}`;
-                }
-                
-                barraCancion.value = audioCancion.currentTime;
-                barraCancion.max = audioCancion.duration;
+                actualizarTiempoCancion(audioCancion, barraCancion, tiempoActual, tiempoRestante);
             }
         });
 
@@ -558,6 +586,9 @@ function alternarPlayPlause() {
             </svg>
             `;
         }
+        
+        document.querySelector(".wave").style.display = "flex";
+        document.querySelector(".numero").classList.remove("block");
     } else {
         audioCancion.pause();
         if (window.matchMedia("(max-width: 991px)").matches) {
@@ -575,6 +606,9 @@ function alternarPlayPlause() {
             </svg>
             `;
         }
+
+        document.querySelector(".wave").style.display = "none";
+        document.querySelector(".numero").classList.add ("block");
     }
 }
 
@@ -584,6 +618,35 @@ function siguienteCancion() {
 
 function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function actualizarTiempoCancion(audioCancion, barraCancion, tiempoActual, tiempoRestante) {
+    let duracionTotal = audioCancion.duration;
+    let duracionRestante = duracionTotal - audioCancion.currentTime;
+    let duracionMinutos = Math.floor(duracionRestante / 60);
+    let duracionSegundos = Math.floor(duracionRestante % 60);
+
+    if (duracionSegundos < 10) {
+        duracionSegundos = `0${duracionSegundos}`;
+    }
+
+    if (duracionSegundos) {
+        tiempoRestante.textContent = `-${duracionMinutos}:${duracionSegundos}`;
+    }
+
+    let minutosActuales = Math.floor(audioCancion.currentTime / 60);
+    let segundosActuales = Math.floor(audioCancion.currentTime % 60);
+
+    if (segundosActuales < 10) {
+        segundosActuales = `0${segundosActuales}`;
+    }
+
+    if (segundosActuales) {
+        tiempoActual.textContent = `${minutosActuales}:${segundosActuales}`;
+    }
+    
+    barraCancion.value = audioCancion.currentTime;
+    barraCancion.max = audioCancion.duration;
 }
 
 function actualizarIconoVolumen () {
