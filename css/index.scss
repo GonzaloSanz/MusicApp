@@ -6,6 +6,7 @@ body {
 
 #logo {
     fill: url(#myGradient);
+    cursor: auto;
 }
 
 #shuffle {
@@ -16,12 +17,9 @@ body {
     width: 1.875em;
 }
 
-#play {
-    width: 3em;
-}
-
 #timer {
-    width: 1.875em;;
+    width: 1.875em;
+    cursor: auto;
 }
 
 svg {
