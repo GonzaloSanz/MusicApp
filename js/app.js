@@ -92,7 +92,7 @@ window.addEventListener('load', () => {
 
     // Controles de volumen
     iconoVolumen.addEventListener('click', () => {
-        if(audioCancion.volume > 0) {
+        if (audioCancion.volume > 0) {
             volumenValor = audioCancion.volume;
             audioCancion.volume = 0;
             barraVolumen.value = 0;
@@ -273,6 +273,9 @@ function cargarCanciones(titulo, canciones, contenidoReducido = false) {
         }
 
         divCancion.setAttribute('id', id);
+        divCancion.onclick = () => {
+            mostrarCancion(id);
+        }
 
         const imagen = document.createElement('img');
         imagen.src = `img/sencillas/${rutaImagen}`;
@@ -416,8 +419,8 @@ function mostrarAlbum(idAlbum) {
     pTitulo.classList.add('uppercase');
     pTitulo.textContent = 'Título';
 
-    const cancionesHeadDer = document.createElement('div');
-    cancionesHeadDer.innerHTML = `
+    const cancionesHeader = document.createElement('div');
+    cancionesHeader.innerHTML = `
         <svg id="timer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
             <path d="M19.5 5q-.65 0-1.075-.425Q18 4.15 18 3.5q0-.65.425-1.075Q18.85 2 19.5 2h9q.65 0 1.075.425Q30 2.85 30 3.5q0 .65-.425 1.075Q29.15 5 28.5 5ZM24 27.35q.65 0 1.075-.425.425-.425.425-1.075v-8.5q0-.65-.425-1.075-.425-.425-1.075-.425-.65 0-1.075.425-.425.425-.425 1.075v8.5q0 .65.425 1.075.425.425 1.075.425Zm0 16.6q-3.7 0-6.975-1.425Q13.75 41.1 11.3 38.65q-2.45-2.45-3.875-5.725Q6 29.65 6 25.95q0-3.7 1.425-6.975Q8.85 15.7 11.3 13.25q2.45-2.45 5.725-3.875Q20.3 7.95 24 7.95q3.35 0 6.3 1.125 2.95 1.125 5.25 3.125l1.55-1.55q.4-.4 1-.4t1.05.45q.45.45.45 1.05 0 .6-.45 1.05l-1.5 1.5q1.8 2 3.075 4.85Q42 22 42 25.95q0 3.7-1.425 6.975Q39.15 36.2 36.7 38.65q-2.45 2.45-5.725 3.875Q27.7 43.95 24 43.95Zm0-3q6.25 0 10.625-4.375T39 25.95q0-6.25-4.375-10.625T24 10.95q-6.25 0-10.625 4.375T9 25.95q0 6.25 4.375 10.625T24 40.95ZM24 26Z" />
         </svg>
@@ -428,7 +431,7 @@ function mostrarAlbum(idAlbum) {
     cancionesHeadIzq.appendChild(pTitulo);
 
     cancionesHead.appendChild(cancionesHeadIzq);
-    cancionesHead.appendChild(cancionesHeadDer);
+    cancionesHead.appendChild(cancionesHeader);
 
     divCanciones.appendChild(cancionesHead);
 
@@ -440,7 +443,7 @@ function mostrarAlbum(idAlbum) {
         divCancion.classList.add('cancion', 'w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer', 'cancionHover');
         divCancion.setAttribute('id', id);
 
-        divCancion.onpointerup = () => {      
+        divCancion.onpointerup = () => {
             if (window.matchMedia("(max-width: 991px)").matches) {
                 reproducir(idAlbum, id);
             }
@@ -499,6 +502,176 @@ function mostrarAlbum(idAlbum) {
     contenidoPrincipal.appendChild(divCanciones);
 }
 
+function mostrarCancion(idCancion) {
+    const cancionSeleccionada = sencillas.find(cancion => cancion.id === idCancion);
+
+    contenidoPrincipal.classList.remove('p-6');
+    limpiarHTML(contenidoPrincipal);
+
+    const { id, nombre, artista, fecha_lanzamiento, rutaImagen, ruta, duracion, color, sombra } = cancionSeleccionada;
+
+    // Cabecera
+    const divCabecera = document.createElement('div');
+    divCabecera.classList.add('p-5', 'sm:p-10');
+    divCabecera.style.background = `linear-gradient(${color}, ${sombra})`;
+
+    const divVolver = document.createElement('div');
+    divVolver.classList.add('w-6', 'md:hover:cursor-pointer');
+    divVolver.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+            <path d="m22.35 38.95-13.9-13.9q-.25-.25-.35-.5Q8 24.3 8 24q0-.3.1-.55.1-.25.35-.5L22.4 9q.4-.4 1-.4t1.05.45q.45.45.45 1.05 0 .6-.45 1.05L13.1 22.5h24.8q.65 0 1.075.425.425.425.425 1.075 0 .65-.425 1.075-.425.425-1.075.425H13.1l11.4 11.4q.4.4.4 1t-.45 1.05q-.45.45-1.05.45-.6 0-1.05-.45Z" />
+        </svg>
+    `;
+
+    divVolver.onclick = () => {
+        limpiarHTML(contenidoPrincipal);
+
+        contenidoPrincipal.classList.add('p-6');
+        crearLogo();
+        cargarCanciones('Echa un vistazo a nuestras canciones', sencillas);
+    }
+
+    const divContenidoCabecera = document.createElement('div');
+    divContenidoCabecera.classList.add('flex', 'flex-wrap', 'justify-between', 'gap-8', 'mt-8', 'md:flex-nowrap', 'md:justify-start');
+
+    const divImagen = document.createElement('div');
+    divImagen.classList.add('h-full', 'min-w-fit', 'mx-auto', 'md:mx-0');
+
+    const imagen = document.createElement('img');
+    imagen.classList.add('h-cover-img', 'rounded-md');
+    imagen.src = `img/sencillas/${rutaImagen}`;
+    imagen.alt = 'Imagen de la canción';
+
+    divImagen.appendChild(imagen);
+
+    const divInfo = document.createElement('div');
+    divInfo.classList.add('flex', 'flex-wrap', 'content-end', 'w-full', 'md:w-fit', 'md:gap-4', 'lg:gap-6');
+
+    const pNombre = document.createElement('p');
+    pNombre.classList.add('w-full', 'mb-3', 'text-4xl', 'font-bold', 'md:text-6xl', 'lg:text-7xl', 'xl:text-8xl');
+    pNombre.textContent = nombre;
+
+    const divResto = document.createElement('p');
+    divResto.classList.add('w-full', 'flex', 'flex-wrap', 'gap-x-5', 'gap-y-1', 'text-md');
+
+    const spanArtista = document.createElement('span');
+    spanArtista.textContent = artista;
+    spanArtista.classList.add('font-semibold');
+
+    const spanFecha = document.createElement('span');
+    spanFecha.textContent = fecha_lanzamiento;
+
+    divResto.appendChild(spanArtista);
+    divResto.appendChild(spanFecha);
+
+    divInfo.appendChild(pNombre);
+    divInfo.appendChild(divResto);
+
+    divContenidoCabecera.appendChild(divImagen);
+    divContenidoCabecera.appendChild(divInfo);
+
+    divCabecera.appendChild(divVolver);
+    divCabecera.appendChild(divContenidoCabecera);
+
+    contenidoPrincipal.appendChild(divCabecera);
+
+    // Canción
+    const divGeneral = document.createElement('div');
+    divGeneral.classList.add('flex', 'flex-wrap', 'p-5', 'sm:p-10');
+
+    const cancionesHead = document.createElement('div');
+    cancionesHead.classList.add('w-full', 'flex', 'justify-between', 'items-center', 'border-b', 'border-neutral-600', 'px-5', 'py-2.5', 'mb-4');
+
+    const cancionesHeadIzq = document.createElement('div');
+    cancionesHeadIzq.classList.add('flex', 'gap-8');
+
+    const pNumero = document.createElement('p');
+    pNumero.textContent = '#';
+
+    const pTitulo = document.createElement('p');
+    pTitulo.classList.add('uppercase');
+    pTitulo.textContent = 'Título';
+
+    const cancionesHeader = document.createElement('div');
+    cancionesHeader.innerHTML = `
+        <svg id="timer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+            <path d="M19.5 5q-.65 0-1.075-.425Q18 4.15 18 3.5q0-.65.425-1.075Q18.85 2 19.5 2h9q.65 0 1.075.425Q30 2.85 30 3.5q0 .65-.425 1.075Q29.15 5 28.5 5ZM24 27.35q.65 0 1.075-.425.425-.425.425-1.075v-8.5q0-.65-.425-1.075-.425-.425-1.075-.425-.65 0-1.075.425-.425.425-.425 1.075v8.5q0 .65.425 1.075.425.425 1.075.425Zm0 16.6q-3.7 0-6.975-1.425Q13.75 41.1 11.3 38.65q-2.45-2.45-3.875-5.725Q6 29.65 6 25.95q0-3.7 1.425-6.975Q8.85 15.7 11.3 13.25q2.45-2.45 5.725-3.875Q20.3 7.95 24 7.95q3.35 0 6.3 1.125 2.95 1.125 5.25 3.125l1.55-1.55q.4-.4 1-.4t1.05.45q.45.45.45 1.05 0 .6-.45 1.05l-1.5 1.5q1.8 2 3.075 4.85Q42 22 42 25.95q0 3.7-1.425 6.975Q39.15 36.2 36.7 38.65q-2.45 2.45-5.725 3.875Q27.7 43.95 24 43.95Zm0-3q6.25 0 10.625-4.375T39 25.95q0-6.25-4.375-10.625T24 10.95q-6.25 0-10.625 4.375T9 25.95q0 6.25 4.375 10.625T24 40.95ZM24 26Z" />
+        </svg>
+    
+    `;
+
+    cancionesHeadIzq.appendChild(pNumero);
+    cancionesHeadIzq.appendChild(pTitulo);
+
+    cancionesHead.appendChild(cancionesHeadIzq);
+    cancionesHead.appendChild(cancionesHeader);
+
+    divGeneral.appendChild(cancionesHead);
+
+    const divCancion = document.createElement('div');
+    divCancion.classList.add('cancion', 'w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer', 'cancionHover');
+    divCancion.setAttribute('id', id);
+
+    divCancion.onpointerup = () => {
+        if (window.matchMedia("(max-width: 991px)").matches) {
+            reproducir(idAlbum, id);
+        }
+    }
+
+    divCancion.ondblclick = () => {
+        if (window.matchMedia("(min-width: 992px)").matches) {
+            reproducir(idAlbum, id);
+        }
+    }
+
+    if (window.matchMedia("(min-width: 992px)").matches) {
+        divCancion.onclick = () => {
+            if (document.querySelector(".cancionSeleccionada")) {
+                document.querySelector(".cancionSeleccionada").classList.remove("cancionSeleccionada");
+            }
+            divCancion.classList.add("cancionSeleccionada");
+        }
+    }
+
+    const cancionIzq = document.createElement('div');
+    cancionIzq.classList.add('flex', 'gap-8', 'items-center', 'overflow-hidden');
+
+    const pNumeroCancion = document.createElement('p');
+    pNumeroCancion.textContent = '1';
+
+    const divNumero = document.createElement('div');
+    divNumero.id = `numero${id}`;
+    divNumero.classList.add('w-5');
+    divNumero.appendChild(pNumeroCancion);
+
+    const pNombreCancion = document.createElement('p');
+    pNombreCancion.classList.add('whitespace-nowrap', 'text-ellipsis', 'overflow-hidden');
+    pNombreCancion.textContent = nombre;
+
+    const divNombre = document.createElement('div');
+    divNombre.classList.add('w-full', 'min-w-0');
+    divNombre.appendChild(pNombreCancion);
+
+    cancionIzq.appendChild(divNumero);
+    cancionIzq.appendChild(divNombre);
+
+    const cancionDer = document.createElement('div');
+
+    const pTiempo = document.createElement('p');
+    pTiempo.textContent = duracion;
+
+    cancionDer.appendChild(pTiempo);
+
+    divCancion.appendChild(cancionIzq);
+    divCancion.appendChild(cancionDer);
+
+    divGeneral.appendChild(divCancion);
+
+    contenidoPrincipal.appendChild(divGeneral);
+
+
+}
+
 function reproducir(idAlbum, idCancion) {
     if (primeraReproduccion === false) {
         contenidoPrincipal.classList.remove("lg:h-screen");
@@ -541,11 +714,11 @@ function reproducir(idAlbum, idCancion) {
 
     const albumCancion = albumes.find(album => album.id === idAlbum);
 
-    const { nombreAlbum, artista, rutaImagen, canciones:cancionesAlbum} = albumCancion;
+    const { nombreAlbum, artista, rutaImagen, canciones: cancionesAlbum } = albumCancion;
 
     const laCancion = cancionesAlbum.find(cancion => cancion.id === idCancion);
 
-    const { nombre, ruta} = laCancion;
+    const { nombre, ruta } = laCancion;
     console.log(nombre);
 
     coverReproductor.src = `../img/albumes/${rutaImagen}`;
@@ -586,7 +759,7 @@ function alternarPlayPlause() {
             </svg>
             `;
         }
-        
+
         document.querySelector(".wave").style.display = "flex";
         document.querySelector(".numero").classList.remove("block");
     } else {
@@ -608,7 +781,7 @@ function alternarPlayPlause() {
         }
 
         document.querySelector(".wave").style.display = "none";
-        document.querySelector(".numero").classList.add ("block");
+        document.querySelector(".numero").classList.add("block");
     }
 }
 
@@ -644,12 +817,12 @@ function actualizarTiempoCancion(audioCancion, barraCancion, tiempoActual, tiemp
     if (segundosActuales) {
         tiempoActual.textContent = `${minutosActuales}:${segundosActuales}`;
     }
-    
+
     barraCancion.value = audioCancion.currentTime;
     barraCancion.max = audioCancion.duration;
 }
 
-function actualizarIconoVolumen () {
+function actualizarIconoVolumen() {
     if (audioCancion.volume === 0) {
         iconoVolumen.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -664,14 +837,14 @@ function actualizarIconoVolumen () {
             l-4.2-4.2l2.1-2.1c0.4-0.4,0.8-0.5,1.3-0.3c0.5,0.2,0.7,0.6,0.7,1.1L23.4,19.7z"/>
         </svg>
         `;
-    } else if(audioCancion.volume > 0 && audioCancion.volume <= 0.33) {
+    } else if (audioCancion.volume > 0 && audioCancion.volume <= 0.33) {
         iconoVolumen.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
             <path d="M17,28.8c-0.3,0-0.6-0.1-0.9-0.3c-0.2-0.2-0.3-0.5-0.3-0.9v-7.2c0-0.3,0.1-0.6,0.3-0.9c0.2-0.2,0.5-0.3,0.9-0.3h5.2l6-6
             c0.4-0.4,0.8-0.5,1.3-0.3c0.5,0.2,0.7,0.6,0.7,1.1v19.8c0,0.5-0.2,0.9-0.7,1.1c-0.5,0.2-0.9,0.1-1.3-0.3l-6-6H17z"/>
         </svg>
         `;
-    } else if(audioCancion.volume > 0.33 && audioCancion.volume <= 0.66) {
+    } else if (audioCancion.volume > 0.33 && audioCancion.volume <= 0.66) {
         iconoVolumen.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
                 <path d="M13.9,28.8c-0.3,0-0.6-0.1-0.9-0.3c-0.2-0.2-0.3-0.5-0.3-0.9v-7.2c0-0.3,0.1-0.6,0.3-0.9c0.2-0.2,0.5-0.3,0.9-0.3h5.2l6-6
