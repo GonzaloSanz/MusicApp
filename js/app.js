@@ -83,12 +83,15 @@ window.addEventListener('load', () => {
     });
 
     // Controles de la canción
+    btnAleatorio.addEventListener('click', modoAleatorio);
 
     btnAnterior.addEventListener('click', anteriorCancion);
 
     btnPlay.addEventListener('click', alternarPlayPlause);
 
     btnSiguiente.addEventListener('click', siguienteCancion);
+
+    btnRepetir.addEventListener('click', modoLoop);
 
     barraCancion.addEventListener('input', () => {
         audioCancion.currentTime = barraCancion.value;
@@ -489,8 +492,7 @@ function mostrarAlbum(idAlbum) {
         divNumero.classList.add('w-5');
 
         if (id === cancionActiva.id && nombre === cancionActiva.nombre && artista === cancionActiva.artista) {
-            divNumero.style.display = "flex";
-            divNumero.style.alignItems = "center";
+            divNumero.classList.add('flex', 'items-center');
             divNumero.innerHTML = `
                 <div class="wave">
                     <div class="wave1"></div>
@@ -682,8 +684,7 @@ function mostrarCancion(idCancion) {
     divNumero.classList.add('w-5');
 
     if (id === cancionActiva.id && nombre === cancionActiva.nombre && artista === cancionActiva.artista) {
-        divNumero.style.display = "flex";
-        divNumero.style.alignItems = "center";
+        divNumero.classList.add('flex', 'items-center');
         divNumero.innerHTML = `
             <div class="wave">
                 <div class="wave1"></div>
@@ -727,6 +728,35 @@ function mostrarCancion(idCancion) {
 
 }
 
+function modoAleatorio() {
+    if(btnAleatorio.classList.contains('modos')) {
+        btnAleatorio.classList.remove('modos');
+    } else {
+        btnAleatorio.classList.add('modos');
+    }
+
+    if(btnRepetir.classList.contains('modos')) {
+        btnRepetir.classList.remove('modos');
+    }
+}
+
+function anteriorCancion() {
+    const { idAlbum } = cancionActiva;
+
+    if (idAlbum) {
+        const elAlbum = albumes.find(album => album.id === idAlbum);
+
+        if (cancionActiva.id - 1 >= 1) {
+            reproducir(idAlbum, cancionActiva.id - 1);
+        } else {
+            reproducir(idAlbum, elAlbum.canciones.length);
+        }
+
+    } else {
+        reproducir(false, cancionActiva.id);
+    }
+}
+
 function reproducir(idAlbum = false, idCancion) {
     if (primeraReproduccion === false) {
         contenidoPrincipal.classList.remove("lg:h-screen");
@@ -742,6 +772,7 @@ function reproducir(idAlbum = false, idCancion) {
     }
 
     const divCancion = document.getElementById(idCancion);
+    console.log(divCancion);
 
     const canciones = document.querySelectorAll('.cancion');
     canciones.forEach(cancion => {
@@ -753,8 +784,7 @@ function reproducir(idAlbum = false, idCancion) {
     divCancion.classList.add('cancionSonando');
 
     const divNombre = document.getElementById(`numero${idCancion}`);
-    divNombre.style.display = "flex";
-    divNombre.style.alignItems = "center";
+    divNombre.classList.add('flex', 'items-center');
     divNombre.innerHTML = `
         <div class="wave">
             <div class="wave1"></div>
@@ -864,16 +894,34 @@ function alternarPlayPlause() {
     }
 }
 
-function anteriorCancion() {
+function siguienteCancion() {
     const { idAlbum } = cancionActiva;
 
     if (idAlbum) {
         const elAlbum = albumes.find(album => album.id === idAlbum);
 
-        if (cancionActiva.id - 1 >= 1) {
-            reproducir(idAlbum, cancionActiva.id - 1);
+        const { canciones: cancionesAlbum } = elAlbum;
+
+        if(btnAleatorio.classList.contains('modos')) {
+            let indiceAleatorio;
+
+            do {
+                indiceAleatorio = numeroAleatorio(1, cancionesAlbum.length);
+            } while(indiceAleatorio === cancionActiva.id);
+
+            const laCancion = cancionesAlbum.find(cancion => cancion.id === indiceAleatorio);
+
+            reproducir(idAlbum, laCancion.id);
+
+        } else if(btnRepetir.classList.contains('modos')) {
+            reproducir(idAlbum, cancionActiva.id);
+
         } else {
-            reproducir(idAlbum, elAlbum.canciones.length);
+            if (cancionActiva.id + 1 <= elAlbum.canciones.length) {
+                reproducir(idAlbum, cancionActiva.id + 1);
+            } else {
+                reproducir(idAlbum, 1);
+            }
         }
 
     } else {
@@ -881,20 +929,15 @@ function anteriorCancion() {
     }
 }
 
-function siguienteCancion() {
-    const { idAlbum } = cancionActiva;
-
-    if (idAlbum) {
-        const elAlbum = albumes.find(album => album.id === idAlbum);
-
-        if (cancionActiva.id + 1 <= elAlbum.canciones.length) {
-            reproducir(idAlbum, cancionActiva.id + 1);
-        } else {
-            reproducir(idAlbum, 1);
-        }
-
+function modoLoop() {
+    if(btnRepetir.classList.contains('modos')) {
+        btnRepetir.classList.remove('modos');
     } else {
-        reproducir(false, cancionActiva.id);
+        btnRepetir.classList.add('modos');
+    }
+
+    if(btnAleatorio.classList.contains('modos')) {
+        btnAleatorio.classList.remove('modos');
     }
 }
 
