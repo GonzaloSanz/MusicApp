@@ -11,6 +11,8 @@
 let albumes = [];
 let sencillas = [];
 
+let cancionActiva = {};
+
 const contenidoPrincipal = document.querySelector('#contenido-principal');
 const contenidoMenu = document.querySelector('#contenido-menu');
 const contenidoReproductor = document.querySelector('#contenido-reproductor');
@@ -440,7 +442,14 @@ function mostrarAlbum(idAlbum) {
         const { id, nombre, duracion } = cancion;
 
         const divCancion = document.createElement('div');
-        divCancion.classList.add('cancion', 'w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer', 'cancionHover');
+        divCancion.classList.add('cancion', 'w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer');
+
+        if (nombre === cancionActiva.nombre && artista === cancionActiva.artista) {
+            divCancion.classList.add('cancionSonando');
+        } else {
+            divCancion.classList.add('cancionHover');
+        }
+
         divCancion.setAttribute('id', id);
 
         divCancion.onpointerup = () => {
@@ -473,7 +482,24 @@ function mostrarAlbum(idAlbum) {
         const divNumero = document.createElement('div');
         divNumero.id = `numero${id}`;
         divNumero.classList.add('w-5');
-        divNumero.appendChild(pNumero);
+
+        if (id === cancionActiva.id && nombre === cancionActiva.nombre && artista === cancionActiva.artista) {
+            divNumero.style.display = "flex";
+            divNumero.style.alignItems = "center";
+            divNumero.innerHTML = `
+                <div class="wave">
+                    <div class="wave1"></div>
+                    <div class="wave2"></div>
+                    <div class="wave3"></div>
+                    <div class="wave4"></div>
+                </div>
+                <div>
+                    <p class="numero">${id}</p>
+                </div>
+            `;
+        } else {
+            divNumero.appendChild(pNumero);
+        }
 
         const pNombre = document.createElement('p');
         pNombre.classList.add('whitespace-nowrap', 'text-ellipsis', 'overflow-hidden');
@@ -508,7 +534,7 @@ function mostrarCancion(idCancion) {
     contenidoPrincipal.classList.remove('p-6');
     limpiarHTML(contenidoPrincipal);
 
-    const { id, nombre, artista, fecha_lanzamiento, rutaImagen, ruta, duracion, color, sombra } = cancionSeleccionada;
+    const { id, nombre, artista, fecha_lanzamiento, rutaImagen, duracion, color, sombra } = cancionSeleccionada;
 
     // Cabecera
     const divCabecera = document.createElement('div');
@@ -609,18 +635,25 @@ function mostrarCancion(idCancion) {
     divGeneral.appendChild(cancionesHead);
 
     const divCancion = document.createElement('div');
-    divCancion.classList.add('cancion', 'w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer', 'cancionHover');
+    divCancion.classList.add('cancion', 'w-full', 'flex', 'justify-between', 'items-center', 'p-5', 'rounded-md', 'md:hover:cursor-pointer');
+
+    if (nombre === cancionActiva.nombre && artista === cancionActiva.artista) {
+        divCancion.classList.add('cancionSonando');
+    } else {
+        divCancion.classList.add('cancionHover');
+    }
+
     divCancion.setAttribute('id', id);
 
     divCancion.onpointerup = () => {
         if (window.matchMedia("(max-width: 991px)").matches) {
-            reproducir(idAlbum, id);
+            reproducir(false, id);
         }
     }
 
     divCancion.ondblclick = () => {
         if (window.matchMedia("(min-width: 992px)").matches) {
-            reproducir(idAlbum, id);
+            reproducir(false, id);
         }
     }
 
@@ -642,7 +675,24 @@ function mostrarCancion(idCancion) {
     const divNumero = document.createElement('div');
     divNumero.id = `numero${id}`;
     divNumero.classList.add('w-5');
-    divNumero.appendChild(pNumeroCancion);
+
+    if (id === cancionActiva.id && nombre === cancionActiva.nombre && artista === cancionActiva.artista) {
+        divNumero.style.display = "flex";
+        divNumero.style.alignItems = "center";
+        divNumero.innerHTML = `
+            <div class="wave">
+                <div class="wave1"></div>
+                <div class="wave2"></div>
+                <div class="wave3"></div>
+                <div class="wave4"></div>
+            </div>
+            <div>
+                <p class="numero">${id}</p>
+            </div>
+        `;
+    } else {
+        divNumero.appendChild(pNumeroCancion);
+    }
 
     const pNombreCancion = document.createElement('p');
     pNombreCancion.classList.add('whitespace-nowrap', 'text-ellipsis', 'overflow-hidden');
@@ -672,7 +722,7 @@ function mostrarCancion(idCancion) {
 
 }
 
-function reproducir(idAlbum, idCancion) {
+function reproducir(idAlbum = false, idCancion) {
     if (primeraReproduccion === false) {
         contenidoPrincipal.classList.remove("lg:h-screen");
         contenidoMenu.classList.add("lg:h-[87%]");
@@ -701,32 +751,55 @@ function reproducir(idAlbum, idCancion) {
     divNombre.style.display = "flex";
     divNombre.style.alignItems = "center";
     divNombre.innerHTML = `
-            <div class="wave">
-                <div class="wave1"></div>
-                <div class="wave2"></div>
-                <div class="wave3"></div>
-                <div class="wave4"></div>
-            </div>
-            <div>
-                <p class="numero">${idCancion}</p>
-            </div>
-        `;
+        <div class="wave">
+            <div class="wave1"></div>
+            <div class="wave2"></div>
+            <div class="wave3"></div>
+            <div class="wave4"></div>
+        </div>
+        <div>
+            <p class="numero">${idCancion}</p>
+        </div>
+    `;
 
-    const albumCancion = albumes.find(album => album.id === idAlbum);
+    if (idAlbum) {
+        const albumCancion = albumes.find(album => album.id === idAlbum);
 
-    const { nombreAlbum, artista, rutaImagen, canciones: cancionesAlbum } = albumCancion;
+        const { nombreAlbum, artista, rutaImagen, canciones: cancionesAlbum } = albumCancion;
 
-    const laCancion = cancionesAlbum.find(cancion => cancion.id === idCancion);
+        const laCancion = cancionesAlbum.find(cancion => cancion.id === idCancion);
 
-    const { nombre, ruta } = laCancion;
-    console.log(nombre);
+        const { nombre, ruta } = laCancion;
 
-    coverReproductor.src = `../img/albumes/${rutaImagen}`;
-    tituloReproductor.textContent = nombre;
-    artistaReproductor.textContent = artista;
+        coverReproductor.src = `../img/albumes/${rutaImagen}`;
+        tituloReproductor.textContent = nombre;
+        artistaReproductor.textContent = artista;
 
+        audioCancion.src = `../audios/${nombreAlbum}/${ruta}`;
 
-    audioCancion.src = `../audios/${nombreAlbum}/${ruta}`;
+        cancionActiva = {
+            id: idCancion,
+            nombre,
+            artista
+        }
+
+    } else {
+        const cancionSencilla = sencillas.find(sencilla => sencilla.id === idCancion);
+
+        const { id, nombre, artista, rutaImagen, ruta } = cancionSencilla;
+
+        coverReproductor.src = `../img/sencillas/${rutaImagen}`;
+        tituloReproductor.textContent = nombre;
+        artistaReproductor.textContent = artista;
+
+        audioCancion.src = `../audios/sencillas/${ruta}`;
+
+        cancionActiva = {
+            id,
+            nombre,
+            artista,
+        }
+    }
 
     alternarPlayPlause();
 }
