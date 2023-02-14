@@ -83,7 +83,12 @@ window.addEventListener('load', () => {
     });
 
     // Controles de la canción
+
+    btnAnterior.addEventListener('click', anteriorCancion);
+
     btnPlay.addEventListener('click', alternarPlayPlause);
+
+    btnSiguiente.addEventListener('click', siguienteCancion);
 
     barraCancion.addEventListener('input', () => {
         audioCancion.currentTime = barraCancion.value;
@@ -778,6 +783,7 @@ function reproducir(idAlbum = false, idCancion) {
         audioCancion.src = `../audios/${nombreAlbum}/${ruta}`;
 
         cancionActiva = {
+            idAlbum,
             id: idCancion,
             nombre,
             artista
@@ -858,8 +864,38 @@ function alternarPlayPlause() {
     }
 }
 
-function siguienteCancion() {
+function anteriorCancion() {
+    const { idAlbum } = cancionActiva;
 
+    if (idAlbum) {
+        const elAlbum = albumes.find(album => album.id === idAlbum);
+
+        if (cancionActiva.id - 1 >= 1) {
+            reproducir(idAlbum, cancionActiva.id - 1);
+        } else {
+            reproducir(idAlbum, elAlbum.canciones.length);
+        }
+
+    } else {
+        reproducir(false, cancionActiva.id);
+    }
+}
+
+function siguienteCancion() {
+    const { idAlbum } = cancionActiva;
+
+    if (idAlbum) {
+        const elAlbum = albumes.find(album => album.id === idAlbum);
+
+        if (cancionActiva.id + 1 <= elAlbum.canciones.length) {
+            reproducir(idAlbum, cancionActiva.id + 1);
+        } else {
+            reproducir(idAlbum, 1);
+        }
+
+    } else {
+        reproducir(false, cancionActiva.id);
+    }
 }
 
 function numeroAleatorio(min, max) {
