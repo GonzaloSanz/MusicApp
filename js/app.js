@@ -367,7 +367,7 @@ function mostrarAlbum(idAlbum) {
     divImagen.classList.add('h-full', 'min-w-fit', 'mx-auto', 'md:mx-0');
 
     const imagen = document.createElement('img');
-    imagen.classList.add('h-cover-img', 'rounded-md');
+    imagen.classList.add('h-cover-img', 'rounded-md', 'object-contain');
     imagen.src = `img/albumes/${rutaImagen}`;
     imagen.alt = 'Imagen del Álbum';
 
