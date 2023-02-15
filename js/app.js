@@ -769,31 +769,34 @@ function reproducir(idAlbum = false, idCancion) {
         document.querySelector(".wave").remove();
     }
 
-    const divCancion = document.getElementById(idCancion);
-    console.log(divCancion);
-
     const canciones = document.querySelectorAll('.cancion');
     canciones.forEach(cancion => {
         cancion.classList.remove('cancionSonando');
         cancion.classList.add('cancionHover');
     });
 
-    divCancion.classList.remove('cancionHover');
-    divCancion.classList.add('cancionSonando');
+    if(document.getElementById(idCancion)) {
+        const divCancion = document.getElementById(idCancion);
 
-    const divNombre = document.getElementById(`numero${idCancion}`);
-    divNombre.classList.add('flex', 'items-center');
-    divNombre.innerHTML = `
-        <div class="wave">
-            <div class="wave1"></div>
-            <div class="wave2"></div>
-            <div class="wave3"></div>
-            <div class="wave4"></div>
-        </div>
-        <div>
-            <p class="numero">${idCancion}</p>
-        </div>
-    `;
+        divCancion.classList.remove('cancionHover');
+        divCancion.classList.add('cancionSonando');
+    }
+
+    if(document.getElementById(`numero${idCancion}`)) {
+        const divNombre = document.getElementById(`numero${idCancion}`);
+        divNombre.classList.add('flex', 'items-center');
+        divNombre.innerHTML = `
+            <div class="wave">
+                <div class="wave1"></div>
+                <div class="wave2"></div>
+                <div class="wave3"></div>
+                <div class="wave4"></div>
+            </div>
+            <div>
+                <p class="numero">${idCancion}</p>
+            </div>
+        `;
+    }
 
     if (idAlbum) {
         const albumCancion = albumes.find(album => album.id === idAlbum);
@@ -867,8 +870,14 @@ function alternarPlayPlause() {
             `;
         }
 
-        document.querySelector(".wave").style.display = "flex";
-        document.querySelector(".numero").classList.remove("block");
+        if(document.querySelector(".wave")) {
+            document.querySelector(".wave").style.display = "flex";
+        }
+
+        if(document.querySelector(".numero")) {
+            document.querySelector(".numero").classList.remove("block");
+        }
+        
     } else {
         audioCancion.pause();
         if (window.matchMedia("(max-width: 1023px)").matches) {
