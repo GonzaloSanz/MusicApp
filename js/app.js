@@ -460,24 +460,25 @@ function mostrarAlbum(idAlbum) {
 
         divCancion.setAttribute('id', id);
 
-        divCancion.onpointerup = () => {
-            if (window.matchMedia("(max-width: 991px)").matches) {
+        divCancion.onclick = (e) => {
+            if (e.pointerType === "touch") {
                 reproducir(idAlbum, id);
-            }
-        }
-
-        divCancion.ondblclick = () => {
-            if (window.matchMedia("(min-width: 992px)").matches) {
-                reproducir(idAlbum, id);
-            }
-        }
-
-        if (window.matchMedia("(min-width: 992px)").matches) {
-            divCancion.onclick = () => {
                 if (document.querySelector(".cancionSeleccionada")) {
                     document.querySelector(".cancionSeleccionada").classList.remove("cancionSeleccionada");
                 }
                 divCancion.classList.add("cancionSeleccionada");
+            }
+            else if (e.pointerType === "mouse") {
+                if (document.querySelector(".cancionSeleccionada")) {
+                    document.querySelector(".cancionSeleccionada").classList.remove("cancionSeleccionada");
+                }
+                divCancion.classList.add("cancionSeleccionada");
+            }
+        }
+
+        divCancion.ondblclick = () => {
+            if (window.matchMedia("(min-width: 1024px)").matches) {
+                reproducir(idAlbum, id);
             }
         }
 
@@ -652,24 +653,21 @@ function mostrarCancion(idCancion) {
 
     divCancion.setAttribute('id', id);
 
-    divCancion.onpointerup = () => {
-        if (window.matchMedia("(max-width: 991px)").matches) {
+    divCancion.onclick = (e) => {
+        if (e.pointerType === "touch") {
             reproducir(false, id);
         }
-    }
-
-    divCancion.ondblclick = () => {
-        if (window.matchMedia("(min-width: 992px)").matches) {
-            reproducir(false, id);
-        }
-    }
-
-    if (window.matchMedia("(min-width: 992px)").matches) {
-        divCancion.onclick = () => {
+        else if (e.pointerType === "mouse") {
             if (document.querySelector(".cancionSeleccionada")) {
                 document.querySelector(".cancionSeleccionada").classList.remove("cancionSeleccionada");
             }
             divCancion.classList.add("cancionSeleccionada");
+        }
+    }
+
+    divCancion.ondblclick = () => {
+        if (window.matchMedia("(min-width: 1024px)").matches) {
+            reproducir(false, id);
         }
     }
 
@@ -850,7 +848,7 @@ function alternarPlayPlause() {
             }
         });
 
-        if (window.matchMedia("(max-width: 991px)").matches) {
+        if (window.matchMedia("(max-width: 1023px)").matches) {
             // Pause.svg
             btnPlay.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -860,7 +858,7 @@ function alternarPlayPlause() {
                 c0,0.6,0.2,1.1,0.6,1.6C30,36.7,30.7,36.8,31.3,36.8z"/>
             </svg>            
             `;
-        } else if (window.matchMedia("(min-width: 992px)").matches) {
+        } else if (window.matchMedia("(min-width: 1024px)").matches) {
             // PauseCircle.svg
             btnPlay.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -873,14 +871,14 @@ function alternarPlayPlause() {
         document.querySelector(".numero").classList.remove("block");
     } else {
         audioCancion.pause();
-        if (window.matchMedia("(max-width: 991px)").matches) {
+        if (window.matchMedia("(max-width: 1023px)").matches) {
             // PlayArrow.svg
             btnPlay.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
                 <path d="M18.3 36.4q-.75.5-1.525.05Q16 36 16 35.1V12.6q0-.9.775-1.35.775-.45 1.525.05L36 22.6q.7.45.7 1.25T36 25.1Z"/>
             </svg>         
             `;
-        } else if (window.matchMedia("(min-width: 992px)").matches) {
+        } else if (window.matchMedia("(min-width: 1024px)").matches) {
             // PlayCircle.svg
             btnPlay.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">

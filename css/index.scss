@@ -1,5 +1,12 @@
 @import "partials/reset.scss";
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
 body {
     font-size: 100%;
 }
@@ -74,6 +81,7 @@ svg {
     height: 1em;
     background-color: white;
     animation: wave 1s linear infinite;
+    animation-delay: -.8s;
 }
 
 .wave2 {
@@ -81,7 +89,7 @@ svg {
     height: 1em;
     background-color: white;
     animation: wave 1s linear infinite;
-    animation-delay: -.2s;
+    animation-delay: -.6s;
 }
 
 .wave3 {
@@ -97,7 +105,7 @@ svg {
     height: 1em;
     background-color: white;
     animation: wave 1s linear infinite;
-    animation-delay: -.6s;
+    animation-delay: -.2s;
 }
 
 @keyframes wave {

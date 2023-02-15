@@ -8,6 +8,16 @@ svg {
   fill: white;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 body {
   font-size: 100%;
 }
@@ -83,6 +93,8 @@ svg {
   background-color: white;
   -webkit-animation: wave 1s linear infinite;
           animation: wave 1s linear infinite;
+  -webkit-animation-delay: -0.8s;
+          animation-delay: -0.8s;
 }
 
 .wave2 {
@@ -91,8 +103,8 @@ svg {
   background-color: white;
   -webkit-animation: wave 1s linear infinite;
           animation: wave 1s linear infinite;
-  -webkit-animation-delay: -0.2s;
-          animation-delay: -0.2s;
+  -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s;
 }
 
 .wave3 {
@@ -111,8 +123,8 @@ svg {
   background-color: white;
   -webkit-animation: wave 1s linear infinite;
           animation: wave 1s linear infinite;
-  -webkit-animation-delay: -0.6s;
-          animation-delay: -0.6s;
+  -webkit-animation-delay: -0.2s;
+          animation-delay: -0.2s;
 }
 
 @-webkit-keyframes wave {
@@ -153,8 +165,3 @@ svg {
 .cancionSonando {
   background-color: #888;
 }/*# sourceMappingURL=index.css.map */
-
-.modos {
-  background-color: #333;
-  border-radius: 10px;
-}

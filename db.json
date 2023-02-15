@@ -173,7 +173,7 @@
                     "id": 1,
                     "nombre": "Todo De Ti",
                     "ruta": "TodoDeTi.mp3",
-                    "duracion": "3:19"
+                    "duracion": "3:31"
                 },
                 {
                     "id": 2,
@@ -191,7 +191,7 @@
                     "id": 4,
                     "nombre": "2 Catorce",
                     "ruta": "2Catorce.mp3",
-                    "duracion": "3:25"
+                    "duracion": "3:32"
                 },
                 {
                     "id": 5,
@@ -270,19 +270,19 @@
                     "id": 2,
                     "nombre": "Balling",
                     "ruta": "Balling.mp3",
-                    "duracion": "3:47"
+                    "duracion": "4:10"
                 },
                 {
                     "id": 3,
                     "nombre": "Sci-Fi",
                     "ruta": "SciFi.mp3",
-                    "duracion": "2:56"
+                    "duracion": "3:05"
                 },
                 {
                     "id": 4,
                     "nombre": "Modern Warfare",
                     "ruta": "ModernWarfare.mp3",
-                    "duracion": "3:22"
+                    "duracion": "3:24"
                 },
                 {
                     "id": 5,
@@ -324,7 +324,7 @@
                     "id": 11,
                     "nombre": "Reaching 2",
                     "ruta": "Reaching2.mp3",
-                    "duracion": "2:58"
+                    "duracion": "3:48"
                 }
             ]
         },
@@ -343,19 +343,19 @@
                     "id": 1,
                     "nombre": "Milagro",
                     "ruta": "Milagro.mp3",
-                    "duracion": "2:43"
+                    "duracion": "3:18"
                 },
                 {
                     "id": 2,
                     "nombre": "Sanuk Sabai Saduak",
                     "ruta": "SanukSabaiSaduak.mp3",
-                    "duracion": "3:09"
+                    "duracion": "3:08"
                 },
                 {
                     "id": 3,
                     "nombre": "León Con Uñas De Gel",
                     "ruta": "LeonConUñasDeGel.mp3",
-                    "duracion": "3:45"
+                    "duracion": "3:47"
                 },
                 {
                     "id": 4,
@@ -367,19 +367,19 @@
                     "id": 5,
                     "nombre": "Sin Faltar A La Verdad",
                     "ruta": "SinFaltarALaVerdad.mp3",
-                    "duracion": "4:34"
+                    "duracion": "4:33"
                 },
                 {
                     "id": 6,
                     "nombre": "Nana Del Miedo",
                     "ruta": "NanaDelMiedo.mp3",
-                    "duracion": "3:39"
+                    "duracion": "3:40"
                 },
                 {
                     "id": 7,
                     "nombre": "Un Diablo En El Infierno",
                     "ruta": "UnDiabloEnElInfierno.mp3",
-                    "duracion": "3:31"
+                    "duracion": "3:45"
                 }
             ]
         }
@@ -415,7 +415,7 @@
             "rutaImagen": "Hookah.jpg",
             "ruta": "Hookah.mp3",
             "duracion": "2:16",
-            "color": "#ffffff",
+            "color": "#2c99e7",
             "sombra": "#164d74"
         },
         {
