@@ -1119,8 +1119,14 @@ function alternarPlayPause() {
             `;
         }
 
-        document.querySelector(".wave").style.display = "flex";
-        document.querySelector(".numero").classList.remove("block");
+        if(document.querySelector(".wave")) {
+            document.querySelector(".wave").style.display = "flex";
+        }
+
+        if(document.querySelector(".numero")) {
+            document.querySelector(".numero").classList.remove("block");
+        }
+        
     } else {
         audioCancion.pause();
         if (window.matchMedia("(max-width: 1023px)").matches) {
