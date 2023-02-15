@@ -458,7 +458,7 @@ function mostrarAlbum(idAlbum) {
             divCancion.classList.add('cancionHover');
         }
 
-        divCancion.setAttribute('id', id);
+        divCancion.setAttribute('id', `album${idAlbum}-cancion${id}`);
 
         divCancion.onclick = (e) => {
             if (e.pointerType === "touch") {
@@ -489,7 +489,7 @@ function mostrarAlbum(idAlbum) {
         pNumero.textContent = id;
 
         const divNumero = document.createElement('div');
-        divNumero.id = `numero${id}`;
+        divNumero.id = `album${idAlbum}-numero${id}`;
         divNumero.classList.add('w-5');
 
         if (id === cancionActiva.id && nombre === cancionActiva.nombre && artista === cancionActiva.artista) {
@@ -651,7 +651,7 @@ function mostrarCancion(idCancion) {
         divCancion.classList.add('cancionHover');
     }
 
-    divCancion.setAttribute('id', id);
+    divCancion.setAttribute('id', `albumNo-cancion${id}`);
 
     divCancion.onclick = (e) => {
         if (e.pointerType === "touch") {
@@ -678,7 +678,7 @@ function mostrarCancion(idCancion) {
     pNumeroCancion.textContent = '1';
 
     const divNumero = document.createElement('div');
-    divNumero.id = `numero${id}`;
+    divNumero.id = `albumNo-numero${id}`;
     divNumero.classList.add('w-5');
 
     if (id === cancionActiva.id && nombre === cancionActiva.nombre && artista === cancionActiva.artista) {
@@ -775,15 +775,35 @@ function reproducir(idAlbum = false, idCancion) {
         cancion.classList.add('cancionHover');
     });
 
-    if(document.getElementById(idCancion)) {
-        const divCancion = document.getElementById(idCancion);
+    if(document.getElementById(`album${idAlbum}-cancion${idCancion}`)) {
+        const divCancion = document.getElementById(`album${idAlbum}-cancion${idCancion}`);
+
+        divCancion.classList.remove('cancionHover');
+        divCancion.classList.add('cancionSonando');
+
+    } else if(document.getElementById(`albumNo-cancion${idCancion}`)) {
+        const divCancion = document.getElementById(`albumNo-cancion${idCancion}`);
 
         divCancion.classList.remove('cancionHover');
         divCancion.classList.add('cancionSonando');
     }
 
-    if(document.getElementById(`numero${idCancion}`)) {
-        const divNombre = document.getElementById(`numero${idCancion}`);
+    if(document.getElementById(`album${idAlbum}-numero${idCancion}`)) {
+        const divNombre = document.getElementById(`album${idAlbum}-numero${idCancion}`);
+        divNombre.classList.add('flex', 'items-center');
+        divNombre.innerHTML = `
+            <div class="wave">
+                <div class="wave1"></div>
+                <div class="wave2"></div>
+                <div class="wave3"></div>
+                <div class="wave4"></div>
+            </div>
+            <div>
+                <p class="numero">${idCancion}</p>
+            </div>
+        `;
+    } else if(document.getElementById(`albumNo-numero${idCancion}`)) {
+        const divNombre = document.getElementById(`albumNo-numero${idCancion}`);
         divNombre.classList.add('flex', 'items-center');
         divNombre.innerHTML = `
             <div class="wave">
