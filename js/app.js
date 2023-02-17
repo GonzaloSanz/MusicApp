@@ -8,9 +8,11 @@
  ***********************************************************
 */
 
+// Arrays que tendrán los datos adquiridos del JSON
 let albumes = [];
 let sencillas = [];
 
+// Objeto que contendrá los datos de la canción reproduciéndose
 let cancionActiva = {};
 
 const contenidoPrincipal = document.querySelector('#contenido-principal');
@@ -61,7 +63,6 @@ const iconoVolumen = document.querySelector('#icono-volumen');
 */
 
 window.addEventListener('load', () => {
-    // Recoger todos los álbumes y canciones del json
     obtenerDatos();
 
     // Acciones del menú
@@ -196,6 +197,7 @@ window.addEventListener('load', () => {
  ***********************************************************
 */
 
+// Recoger todos los álbumes y canciones del json
 function obtenerDatos() {
     fetch('db.json')
         .then(respuesta => respuesta.json())
@@ -215,6 +217,7 @@ function obtenerDatos() {
         });
 }
 
+// Cargar la home de la aplicación, con álbumes y canciones aleatorias
 function cargarInicio() {
     contenidoPrincipal.classList.add('p-6');
     crearLogo();
@@ -259,6 +262,7 @@ function cargarInicio() {
     cargarIconoMenuInicio();
 }
 
+// Mostrar la vista con todos los álbumes disponibles
 function cargarAlbumes(titulo, albumes) {
     const tituloSeccionAlbumes = document.createElement('h3');
     tituloSeccionAlbumes.classList.add('my-6', 'text-2xl', 'font-bold', 'md:my-10', 'md:text-3xl');
@@ -270,7 +274,6 @@ function cargarAlbumes(titulo, albumes) {
     contenidoPrincipal.appendChild(tituloSeccionAlbumes);
     contenidoPrincipal.appendChild(contenedorAlbumes);
 
-    // Mostrar álbumes
     albumes.forEach(album => {
         const { id, nombreAlbum, artista, rutaImagen } = album;
 
@@ -306,6 +309,7 @@ function cargarAlbumes(titulo, albumes) {
     });
 }
 
+// Mostrar la vista con todas las canciones disponibles
 function cargarCanciones(titulo, canciones, contenidoReducido = false) {
     const tituloSeccionCanciones = document.createElement('h3');
     tituloSeccionCanciones.classList.add('my-6', 'text-2xl', 'font-bold', 'md:my-10', 'md:text-3xl');
@@ -317,7 +321,6 @@ function cargarCanciones(titulo, canciones, contenidoReducido = false) {
     contenidoPrincipal.appendChild(tituloSeccionCanciones);
     contenidoPrincipal.appendChild(contenedorCanciones);
 
-    // Mostrar canciones
     canciones.forEach((cancion, index) => {
         const { id, nombre, artista, rutaImagen } = cancion;
 
@@ -366,6 +369,7 @@ function cargarCanciones(titulo, canciones, contenidoReducido = false) {
     });
 }
 
+// Crear el logo de la aplicación y añadirlo al contenido principal
 function crearLogo() {
     const divLogo = document.createElement('div');
     divLogo.classList.add('flex', 'items-center', 'mt-4', 'mb-8');
@@ -386,6 +390,7 @@ function crearLogo() {
     contenidoPrincipal.appendChild(divLogo);
 }
 
+// Mostrar la información y canciones del álbum al hacer clic sobre él
 function mostrarAlbum(idAlbum) {
     const albumSeleccionado = albumes.find(album => album.id === idAlbum);
 
@@ -594,6 +599,7 @@ function mostrarAlbum(idAlbum) {
     contenidoPrincipal.scrollTo(0,0);
 }
 
+// Mostrar la vista de una sola canción, con su información
 function mostrarCancion(idCancion) {
     const cancionSeleccionada = sencillas.find(cancion => cancion.id === idCancion);
 
@@ -785,6 +791,7 @@ function mostrarCancion(idCancion) {
     contenidoPrincipal.scrollTo(0,0);
 }
 
+// Activar el modo aleatorio
 function modoAleatorio() {
     if(btnAleatorio.classList.contains('modos')) {
         btnAleatorio.classList.remove('modos');
@@ -797,6 +804,7 @@ function modoAleatorio() {
     }
 }
 
+// Modo aleatorio en la vista de reproductor extendido
 function modoAleatorioExtendido(btnAleatorioExtendido, btnRepetirExtendido) {
     modoAleatorio();
     if(btnAleatorio.classList.contains('modos')) {
@@ -811,6 +819,7 @@ function modoAleatorioExtendido(btnAleatorioExtendido, btnRepetirExtendido) {
     }
 }
 
+// Reproducir la anterior canción a la actual
 function anteriorCancion() {
     const { idAlbum } = cancionActiva;
 
@@ -828,6 +837,7 @@ function anteriorCancion() {
     }
 }
 
+// Reproducir la canción con el id pasado por parámetros
 function reproducir(idAlbum = false, idCancion) {
     if (primeraReproduccion === false) {
         contenidoPrincipal.classList.remove('lg:h-screen');
@@ -942,12 +952,13 @@ function reproducir(idAlbum = false, idCancion) {
     alternarPlayPause();
 }
 
+// Eliminar la vista de reproductor extendido
 function borrarReproductorExtendido(){
     document.getElementById('reproductorExtendido').remove();
 };
 
+// Mostrar vista de reproductor extendido
 function extenderReproductor() {
-
     const reproductorExtendido = document.createElement('div');
     reproductorExtendido.id = 'reproductorExtendido';
 
@@ -984,6 +995,7 @@ function extenderReproductor() {
         tiempoActual.textContent = `${minutosActuales}:${segundosActuales}`;
     }
     
+    // Contenido del reproductor
     reproductorExtendido.innerHTML = `
         <div class='h-custom w-full absolute top-0 left-0 z-10 lg:hidden'>
         <div class='flex flex-wrap content-between p-5 sm:p-10 h-full w-full text-white overflow-auto' style='background: linear-gradient(${cancionActiva.color}, ${cancionActiva.sombra});'>
@@ -1138,6 +1150,7 @@ function extenderReproductor() {
 
 }
 
+// Cambiar el botón de play y pausa en función del estado de la canción
 function alternarPlayPause() {
     if (audioCancion.paused) {
         audioCancion.play();
@@ -1203,6 +1216,7 @@ function alternarPlayPause() {
     }
 }
 
+// Alternar botones de play y pausa en el reproductor extendido
 function alternarPlayPauseExtendido(btnPlayExtendido, barraCancionExtendida, tiempoActualExtendido, tiempoRestanteExtendido) {
     if (audioCancion.paused) {
         audioCancion.play();
@@ -1283,6 +1297,7 @@ function alternarPlayPauseExtendido(btnPlayExtendido, barraCancionExtendida, tie
     }
 }
 
+// Reproducir la siguiente canción a la actual
 function siguienteCancion() {
     const { idAlbum } = cancionActiva;
 
@@ -1318,6 +1333,7 @@ function siguienteCancion() {
     }
 }
 
+// Activar el modo loop
 function modoLoop() {
     if(btnRepetir.classList.contains('modos')) {
         btnRepetir.classList.remove('modos');
@@ -1330,6 +1346,7 @@ function modoLoop() {
     }
 }
 
+// Modo loop en reproductor extendido
 function modoLoopExtendido(btnRepetirExtendido, btnAleatorioExtendido) {
     modoLoop();
 
@@ -1345,10 +1362,12 @@ function modoLoopExtendido(btnRepetirExtendido, btnAleatorioExtendido) {
     }
 }
 
+// Generar un número aleatorio entre los dos pasados por parámetros (ambos incluídos)
 function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+// Actualizar el tiempo restante y actual de la canción
 function actualizarTiempoCancion(audioCancion, barraCancion, tiempoActual, tiempoRestante) {
     let duracionTotal = audioCancion.duration;
     let duracionRestante = duracionTotal - audioCancion.currentTime;
@@ -1378,6 +1397,7 @@ function actualizarTiempoCancion(audioCancion, barraCancion, tiempoActual, tiemp
     barraCancion.max = audioCancion.duration;
 }
 
+// Rellenar el icono de inicio del menú 
 function cargarIconoMenuInicio() {
     iconoInicio.innerHTML = `
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'>
@@ -1399,6 +1419,7 @@ function cargarIconoMenuInicio() {
         `;
 }
 
+// Rellenar el icono de álbumes del menú 
 function cargarIconoMenuAlbum() {
     iconoInicio.innerHTML = `
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'>
@@ -1420,6 +1441,7 @@ function cargarIconoMenuAlbum() {
         `;
 }
 
+// Rellenar el icono de sencillas del menú 
 function cargarIconoMenuSencillas() {
     iconoInicio.innerHTML = `
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'>
@@ -1438,6 +1460,7 @@ function cargarIconoMenuSencillas() {
         `;
 }
 
+// Cambiar el icono del volumen de la canción, según vaya cambiando el valor de la barra
 function actualizarIconoVolumen() {
     if (audioCancion.volume === 0) {
         iconoVolumen.innerHTML = `
@@ -1483,6 +1506,7 @@ function actualizarIconoVolumen() {
     }
 }
 
+// Cambiar el estilo de los iconos de play y pausa, según la resolución de la pantalla
 function comprobarMediaQuery() {
     const mediaQuery = window.matchMedia('(max-width: 1023px)');
     mediaQuery.addEventListener('change', () => {
@@ -1530,6 +1554,7 @@ function comprobarMediaQuery() {
     });
 }
 
+// Eliminar el contenido HTML del elemento pasado por parámetros
 function limpiarHTML(elemento) {
     while (elemento.firstChild) {
         elemento.removeChild(elemento.firstChild);
